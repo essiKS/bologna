@@ -1,0 +1,101 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Risultati della fase assunzioni {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+    <p style="margin-left: 40px"> <i>
+        La fase di assunzione è terminata. <br> Risultati complessivi:
+        {{ group.num_contracts_closed |json }} <span id="scon">lavoratori sono stati assunti</span>
+         con queste iniziali offerte di salario: {{ group.wage_list }}.<br>
+        In questo round, <span id="emps_unmatched"> </span> <span id="semps">datori di lavoro</span>
+        e <span id="workers_unmatched"> </span> <span id="sworks"> lavoratori </span> sono senza contratto.
+</i> </p>
+
+
+{% if player.matched == 0 %}
+    <p> Non hai assunto un lavoratore. </p>
+{% endif %}
+
+
+{% if player.matched == 1 and player.tax_outcome == 1 and player.treatment != "no_taxes" %}
+    <h3> Schema di tassazione </h3>
+    <p> Non ci sono tasse per questo periodo. </p>
+{% elif player.matched == 1 and player.tax_outcome == 2 and player.treatment != "no_taxes" %}
+    <h3> Schema di tassazione </h3>
+    <p> Si applica una <b> tassa del 20 % sui ricavi del datore di lavoro</b>. </p>
+{% elif player.matched == 1 and player.tax_outcome == 3 and player.treatment != "no_taxes" %}
+    <h3> Schema di tassazione </h3>
+    <p>Si applica una <b> tassa del 20 % sul reddito del lavoratore</b>. </p>
+{% endif %}
+
+{% if player.matched == 1 %}
+    <h4> Salario finale: </h4>
+    <p> L'offerta di salario era preliminare. Ora devi scegliere il salario finale. </p>
+    <p> Hai assunto un lavoratore con l'offerta di salario iniziale di <b>{{ player.wage_offer }}</b>,
+segnata qui sotto con uno sfondo <b><span class="chosenbutton">azzurro</span></b>.</p>
+
+    <p> Cliccando su uno di questi pulsanti, invierai l’offerta finale: </p>
+        <form>
+            {% for offer in Constants.offer_range %}
+                {% if offer == player.wage_offer %}
+                <button type="submit" data-offer={{ offer }} class="offer" style="background-color: lightskyblue">{{ offer }}</button>
+                {% else %}
+                <button type="submit" data-offer={{ offer }} class="offer">{{ offer }}</button>
+                {% endif %}
+            {% endfor %}
+    <input type="hidden" id="adjustment" name="wage_adjustment" value= 0 >
+    </form>
+
+{% endif %}
+{% endblock %}
+
+{% block styles %}
+
+    <style type="text/css">
+.chosenbutton {
+            background-color:lightskyblue;
+            color: navy;
+            padding: 2px 10px 2px 10px;
+            border: groove;
+            border-color: lightsteelblue;
+            font-weight: bold;
+            margin: 1px;
+}
+    </style>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript"></script>
+    <script>
+    var adjustment;
+    $("button.offer").on("click", function () {
+        adjustment =  $(this).data('offer') - {{ player.wage_offer|json }};
+        var adjusted_offer = $(this).data('offer');
+        $("#adjustment").val(adjustment);
+        $('input#to_show_adjusted').val(adjusted_offer);
+        $('input#id_wage_adjusted').val(adjusted_offer);
+    });
+
+    window.onload = function () {
+        var emps_un = {{ Constants.num_employers|json }} - {{ group.num_contracts_closed|json }};
+        $("span#emps_unmatched").html(emps_un);
+        if (emps_un === 1) {
+            $("span#semps").html("datore di lavoro");
+        }
+        var workers_un = {{ Constants.num_workers|json }} - {{ group.num_contracts_closed|json }};
+        $('span#workers_unmatched').html(workers_un);
+        if (workers_un === 1) {
+            $("span#sworks").html("lavoratore");
+        }
+        if (1 === {{ groups.num_contracts_closed|json }}) {
+            $("span#scon").html("lavoratore è stato assunte???");
+        }
+    };
+
+
+    </script>
+{% endblock %}

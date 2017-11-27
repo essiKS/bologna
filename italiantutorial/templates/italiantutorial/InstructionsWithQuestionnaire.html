@@ -1,0 +1,168 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Istruzioni Dettagliate
+{% endblock %}
+
+{% block content %}
+    <head>
+ <style>
+div.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 25%;
+    height: 800px;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 75%;
+    border-left: none;
+    height: 800px;
+}
+</style>
+    </head>
+
+
+<div class="tab">
+  <button id='auction' type="button" class="tablinks" onclick="openCity(event, 'Auction')">Fase di assunzione</button>
+    <!-- This title needs to be changed!!! not all have taxes!!! -->
+    {% if player.timeline == "indirect" and player.treatment != "no_taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Tasse e salario finale</button>
+    {% elif player.timeline == "indirect" and player.treatment == "no_taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e salario finale</button>
+    {% elif player.timeline == "direct" and player.treatment != "no_taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e tasse</button>
+    {% elif player.timeline == "direct" and player.treatment == "taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione </button>
+    {% endif %}
+  <button id='work' type="button" class="tablinks" onclick="openCity(event, 'Work')">Il lavoro</button>
+  <button id='payoffs' type="button" class="tablinks" onclick="openCity(event, 'Payoffs')">I guadagni</button>
+</div>
+
+<div id="Auction" class="tabcontent">
+    {% include 'italiantutorial/instructions_auction.html' %}
+</div>
+
+<div id="Taxes" class="tabcontent">
+    {% include 'italiantutorial/instructions_taxes.html' %}
+</div>
+
+<div id="Work" class="tabcontent">
+    {% include 'italiantutorial/instructions_work.html' %}
+<img width="100%" src="{% static "tutorial/Task_Example_.png" %}">
+</div>
+
+<div id="Payoffs" class="tabcontent">
+    {% include 'italiantutorial/instructions_payoffs.html' %}
+</div>
+
+
+    <p> Per procedere al vero esperimento, <b>per favore rispondi alle seguenti le domande riguardanti le istruzioni</b>.
+Sarai automaticamente indirizzato alla prossima pagina una volta che avrai risposto correttamente a tutte le domande.
+Se hai bisogno di controllare alcuni dettagli, puoi liberamente sfogliare le pagine di istruzioni qui sopra.
+Puoi trovare anche una versione cartacea di tutte le istruzioni sul tuo banco. </p>
+
+    {{ form }}
+    <div style="background-color: pink"><span id="feed"></span></div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    var participant_code = "{{ participant.code }}";
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var socket = new WebSocket(ws_scheme + '://' + window.location.host + "/questionnaire/" + participant_code);
+
+    $('input[name^="trueorfalse"]').on('click', function () {
+            arr_to_send = {};
+            $('input[name^="trueorfalse"]:checked').each(function (index, value) {
+                arr_to_send[value.name.substring(12)] =value.value;
+            });
+            send_answers(arr_to_send);
+        });
+    send_answers = function (answers) {
+        console.log("sending message");
+        var msg = {
+            participant_code: participant_code,
+            answers: answers
+        };
+        if (socket.readyState === socket.OPEN) {
+            socket.send(JSON.stringify(msg));
+        }
+    };
+    window.onload = function () {
+        openCity(event, 'Payoffs');
+        $("button#payoffs").prop('class', 'tablinks active');
+    };
+
+    socket.onerror = function (error) {
+        console.log('WebSocket Error: ' + error);
+    };
+    socket.onopen = function (event) {
+        console.log('connected to oTree');
+    };
+    socket.onmessage = function (event) {
+        var obj = jQuery.parseJSON(event.data);
+        if (obj === "Correct") {
+            $("#form").submit();
+        }
+        else if (obj !== "Correct" || obj !== "Incorrect" || obj !== "Incomplete") {
+            // THIS LINE IS TO BE TRANSLATED:
+            $("#feed").html("<b>Le tue risposte non erano corrette. Qui troverai qualche indizio utile:</b> <br>" + obj + ".");
+        }
+    };
+    socket.onclose = function (event) {
+        console.log('disconnected from oTree');
+    };
+    </script>
+{% endblock %}

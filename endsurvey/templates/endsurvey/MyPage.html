@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Questionario
+{% endblock %}
+
+
+{% block content %}
+<h3>Infine vorremmo chiederti di fornirci alcuni dati statistici su di te.</h3>
+
+{% for field in form %}
+    {% formfield field %}
+{% endfor %}
+    <p> <button class="otree-btn-next btn btn-primary next-button otree-next-button">Successivo</button> </p>
+
+{% endblock %}

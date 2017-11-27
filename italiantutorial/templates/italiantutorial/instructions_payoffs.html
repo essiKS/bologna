@@ -1,0 +1,112 @@
+<h3>I guadagni </h3>
+
+    <p> Dopo 5 minuti o dopo aver tentato 10 compiti, tutti i partecipanti saranno indirizzati alla pagina dei risultati.
+        Il lavoratore e il datore di lavoro che lo ha assunto verranno a conoscenza del numero di <b>compiti tentati</b> e
+        di <b>compiti correttamente completati</b> dal lavoratore
+        (in questo caso: <b>{{ player.tasks_attempted }}</b> <span id="ten">tentati</span>
+        e <b>{{ player.tasks_correct }}</b> <span id="cor">corretti</span>),
+        e del conseguente <b>guadagno finale di entrambi</b>,
+        ma non dei risultati degli altri partecipanti.</p>
+
+    <p> <b>Se il partecipante non ha un contratto</b>, i guadagni sono i seguenti:</p>
+<ul>
+    <li>Guadagno del datore di lavoro = 0 punti </li>
+    <li>Guadagno del lavoratore = 20 punti</li>
+</ul>
+
+{% if player.timeline == 'indirect' and player.treatment != 'no_taxes' %}
+    <p> <b>Se il partecipante ha un contratto</b> (e non ci sono tasse): </p>
+<ul>
+    <li>Guadagno del datore di lavoro = 40 - salario finale + 20 * numero di compiti corretti</li>
+    <li>Guadagno del lavoratore = salario finale </li>
+</ul>
+
+    <p> In altre parole, quando assume qualcuno, il datore di lavoro riceve 40 punti,
+        paga il salario finale, e ottiene dei ricavi per ogni compito correttamente svolto dal lavoratore.
+        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+        Il guadagno di un lavoratore consiste, invece, nel salario finale.</p>
+
+{% elif player.timeline == 'direct' and player.treatment != 'no_taxes' %}
+    <p> <b>Se il partecipante ha un contratto</b> (e non ci sono tasse): </p>
+<ul>
+    <li>Guadagno del datore di lavoro = 40 - salario + 20 * numero di compiti corretti</li>
+    <li>Guadagno del lavoratore = salario </li>
+</ul>
+
+    <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
+        paga il salario, e ottiene dei ricavi per ogni compito correttamente svolto.
+        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+        Il guadagno di un lavoratore consiste, invece, nel salario.</p>
+{% elif player.timeline == 'indirect' and player.treatment == 'no_taxes' %}
+        <p> <b>Se il partecipante ha un contratto</b>: </p>
+<ul>
+    <li>Guadagno del datore di lavoro = 40 - salario finale + 20 * numero di compiti corretti</li>
+    <li>Guadagno del lavoratore = salario finale </li>
+</ul>
+
+    <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
+        paga il salario finale, e ottiene dei ricavi per ogni compito correttamente svolto.
+        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+        Il guadagno di un lavoratore consiste, invece, nel salario finale.</p>
+    {% elif player.timeline == 'direct' and player.treatment == 'no_taxes' %}
+    <p> <b>Se il partecipante ha un contratto</b>: </p>
+<ul>
+    <li>Guadagno del datore di lavoro = 40 - salario + 20 * numero di compiti corretti</li>
+    <li>Guadagno del lavoratore = salario </li>
+</ul>
+
+    <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
+        paga il salario, e ottiene dei ricavi per ogni compito correttamente svolto.
+        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+        Il guadagno di un lavoratore consiste, invece, nel salario.</p>
+{% endif %}
+
+{% if player.timeline == 'indirect' and player.treatment == 'employer_tax' or player.timeline == 'indirect' and player.treatment == 'all_taxes' %}
+    <p>
+        <b>Nel caso di una tassa sui ricavi del datore di lavoro</b>,
+        il guadagno per ogni compito correttamente svolto è ridotto a 16 (da 20) e quindi il guadagno totale è dato da:<p>
+<ul>
+    <li>Guadagno del datore di lavoro = 40 - salario finale + <b>16 * numero di compiti corretti</b></li>
+</ul>
+{% elif player.timeline == 'direct' and player.treatment == 'employer_tax' or player.timeline == 'direct' and player.treatment == 'all_taxes' %}
+    <p>
+        <b>Nel caso di una tassa sui ricavi del datore di lavoro</b>,
+        il guadagno per ogni compito correttamente svolto è ridotto a 16 (da 20) e quindi il guadagno totale è dato da:<p>
+<ul>
+    <li>Guadagno del datore di lavoro = 40 - salario + <b>16  * numero di compiti corretti</b></li>
+</ul>
+{% endif %}
+{% if player.timeline == 'indirect' and player.treatment == 'worker_tax' or player.timeline == 'indirect' and player.treatment == 'all_taxes' %}
+    <p> <b>Nel caso di una tassa sul reddito del lavoratore</b>,
+        il guadagno del lavoratore è dato dal salario finale meno le tasse: </p>
+<ul>
+    <li>Guadagno del lavoratore = salario finale <b>- 0.20 * salario finale</b> </li>
+</ul>
+{% elif player.timeline == 'direct' and player.treatment == 'worker_tax' or player.timeline == 'direct' and player.treatment == 'all_taxes' %}
+        <p> <b>Nel caso di una tassa sul reddito del lavoratore</b>,
+        il guadagno del lavoratore è dato dal salario meno le tasse: </p>
+<ul>
+    <li>Guadagno del lavoratore = salario <b>- 0.20 * salario</b> </li>
+</ul>
+{% endif %}
+{% if player.treatment == 'all_taxes' %}
+    <p> I due sistemi di tassazione non verranno mai applicati simultaneamente.</p>
+{% endif %}
+<!-- information common to all -->
+    <p> I punti ottenuti in laboratorio verranno convertiti in Euro secondo questo tasso di cambio: 10 punti = 1 euro.
+        Oltre alla quota di partecipazione di 5 euro, <b>I partecipanti verranno remunerati solo per tre round (sugli 8 totali),
+        che verranno estratti casualmente alla fine dell'esperimento.</b> </p>
+
+{% block scripts %}
+    <script>
+    window.onload = function () {
+        if (1 === {{ player.tasks_attempted }}) {
+            $("span#ten").html("tentato");
+        }
+        if (1 === {{ player.tasks_correct }}) {
+            $("span#cor").html("corretto");
+        }
+    }
+    </script>
+
+{% endblock %}

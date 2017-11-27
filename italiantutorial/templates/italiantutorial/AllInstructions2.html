@@ -1,0 +1,138 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Istruzioni Dettagliate
+{% endblock %}
+
+{% block content %}
+    <head>
+ <style>
+div.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 25%;
+    height: 720px;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 75%;
+    border-left: none;
+    height: 720px;
+}
+</style>
+    </head>
+
+<div class="tab">
+  <button id='auction' type="button" class="tablinks" onclick="openCity(event, 'Auction')">Fase di assunzione</button>
+    <!-- This title needs to be changed!!! not all have taxes!!! -->
+    {% if player.timeline == "indirect" and player.treatment != "no_taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Tasse e salario finale</button>
+    {% elif player.timeline == "indirect" and player.treatment == "no_taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e salario finale</button>
+    {% elif player.timeline == "direct" and player.treatment != "no_taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e tasse</button>
+    {% elif player.timeline == "direct" and player.treatment == "taxes" %}
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione </button>
+    {% endif %}
+  <button id='work' type="button" class="tablinks" onclick="openCity(event, 'Work')">Il lavoro</button>
+  <button id='payoffs' type="button" class="tablinks" onclick="openCity(event, 'Payoffs')">I guadagni</button>
+</div>
+<div id="Auction" class="tabcontent">
+
+{% include 'italiantutorial/instructions_auction.html' %}
+
+    {% if player.treatment == "no_taxes" %}
+<p><i> Per procedere alla pagina successiva, vai alla scheda "Il lavoro" (sulla sinistra) e premi
+    "Comincia una sessione di prova". </i></p>
+    {% endif %}
+</div>
+
+<div id="Taxes" class="tabcontent">
+
+{% include 'italiantutorial/instructions_taxes.html' %}
+
+    {% if player.treatment == "no_taxes" %}
+<p><i> Per procedere alla pagina successiva, vai alla scheda "Il lavoro" (sulla sinistra) e premi
+    "Comincia una sessione di prova". </i></p>
+    {% endif %}
+</div>
+
+<div id="Work" class="tabcontent">
+
+{% include 'italiantutorial/instructions_work.html' %}
+<img width="100%" src="{% static "italiantutorial/Task_Example_.png" %}">
+
+
+<button class="otree-btn-next"> Comincia una sessione di prova  </button>
+</div>
+
+<div id="Payoffs" class="tabcontent">
+  {% include 'italiantutorial/instructions_payoffs.html' %}
+
+</div>
+
+   <p> Per procedere alla pagina successiva, vai alla scheda "Il lavoro" (sulla sinistra) e premi
+       "Comincia una sessione di prova". </p>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    window.onload = function () {
+        openCity(event, 'Taxes');
+        $("button#payoffs").prop("disabled", true);
+        $("button#payoffs").prop("style", 'color: gray');
+        $("button#taxes").prop('class', 'tablinks active');
+    }
+    </script>
+{% endblock %}

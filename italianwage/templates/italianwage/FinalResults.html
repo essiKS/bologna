@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+{% block title %}
+    Risultati finali
+{% endblock %}
+
+{% block content %}
+
+    <table class="table">
+        <tr>
+            <th>Round</th>
+            <th>Guadagno</th>
+        </tr>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.round_number }}</td>
+                <td>
+                    {{ p.pay|json }} punti
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p> La quota di partecipazione è pari a 5 euro.</p>
+    <p>
+        I round per i quali verrai ricompensato sono: <b>{{ paying_rounds }} e {{ last_round }}</b>
+    </p>
+    <p>
+        Il tuo guadagno totale è pertanto: <b>{{ player.total_payoff | json}} punti = {{ in_euros |json }} Euro</b>
+    </p>
+
+
+{% endblock %}

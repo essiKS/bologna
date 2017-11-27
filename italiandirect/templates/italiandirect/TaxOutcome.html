@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Tasse {{ player.round_number }}
+{% endblock %}
+
+{% block content %}
+
+{% if player.tax_outcome == 1 and player.treatment != "no_taxes" %}
+    <h3> Schema di tassazione </h3>
+    <p> Non ci sono tasse per questo periodo. </p>
+{% elif player.tax_outcome == 2 and player.treatment != "no_taxes" %}
+    <h3> Schema di tassazione </h3>
+    <p> Si implementa una <b>tassa</b> del 20 % <b>sui ricavi del datore di lavoro</b>. </p>
+{% elif player.tax_outcome == 3 and player.treatment != "no_taxes" %}
+    <h3> Schema di tassazione </h3>
+    <p>Si implementa una <b>tassa</b> del 20 % <b>sul reddito del lavoratore</b>. </p>
+{% endif %}
+
+    <p> La fase di assunzione comincerà subito dopo questa pagina. </p>
+
+{% endblock %}
+
+

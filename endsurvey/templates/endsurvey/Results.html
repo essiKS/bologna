@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Risultati finali
+{% endblock %}
+
+{% block content %}
+    <span id="info">
+
+    <p> Il tuo guadagno: <b>{{ your_payoff}} </b>
+    </p>
+    </span>
+
+    <button type="button" id="hider" class="offer" value="0"> <span id="hide">Nascondere il guadagno</span> </button>
+    <p></p>
+
+    <p> Questa è l'ultima pagina dell'esperimento.</p>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var thing = 0;
+
+    $("#hider").on('click', function () {
+        if (thing === 0) {
+            $("span#info").html("<p> Le informazioni sui pagamenti sono nascoste. </p>");
+            $("span#hide").html("Mostrare il guadagno");
+            thing = 1;
+        }
+        else {
+            $("span#info").html("<p data-format=\"#.00\"> Il tuo guadagno: <b>{{ your_payoff }} </b></p>");
+            $("span#hide").html("Nascondere il guadagno");
+            thing = 0;
+        }
+    });
+
+</script>
+
+{% endblock %}
+
