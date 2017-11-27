@@ -33,7 +33,8 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        tax_outcome = random.randint(1, 3)
+        taxes = [1, 3, 1, 3, 1, 2, 1, 2]
+        tax_outcome = taxes[self.round_number - 1]
         if 'treatment' in self.session.config:
             if self.session.config['treatment'] == "no_taxes":
                 tax_outcome = 1
@@ -49,12 +50,6 @@ class Subsession(BaseSubsession):
                     tax_outcome = 1
                     for p in self.get_players():
                         p.treatment = "employer_tax"
-            if self.session.config['treatment'] == "all_taxes":
-                tax_outcome = random.randint(1,6)
-                if tax_outcome >= 4:
-                    tax_outcome = 1
-                for p in self.get_players():
-                    p.treatment = "all_taxes"
         for p in self.get_players():
             p.tax_outcome = tax_outcome
         for g in self.get_groups():
@@ -64,7 +59,6 @@ class Subsession(BaseSubsession):
             self.session.vars['paying_rounds'] = paying_rounds
             random_list = random.sample(range(1, Constants.players_per_group), Constants.num_employers)
             self.session.vars['roles'] = random_list
-
 
     def vars_for_admin_report(self):
         total_payoffs = sorted([p.total_payoff for p in self.get_players()])
