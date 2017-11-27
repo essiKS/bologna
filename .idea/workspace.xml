@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de4fd806-7f92-452b-9229-5b1c95411ac9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/fields.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/templates/radiogrid/radiogrid_input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/templates/radiogrid/radiogrid_widget.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/radiogrid/widgets.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiandirect/models.py" afterPath="$PROJECT_DIR$/italiandirect/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italianwage/models.py" afterPath="$PROJECT_DIR$/italianwage/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.py" afterPath="$PROJECT_DIR$/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,11 +18,21 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/italiantutorial/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="1229">
               <caret line="84" column="37" lean-forward="false" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
               <folding>
                 <element signature="e#0#134#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/italiandirect/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,14 +60,24 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2085">
-              <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+            <state relative-caret-position="423">
+              <caret line="137" column="34" lean-forward="false" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instructions_payoffs.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/italianwage/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instructions_payoffs.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_payoffs.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -101,8 +117,6 @@
       <list>
         <option value="$PROJECT_DIR$/_templates/global/Page.html" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/AuctionResultsWorker.html" />
-        <option value="$PROJECT_DIR$/italianwage/models.py" />
-        <option value="$PROJECT_DIR$/italiandirect/models.py" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/FinalResults.html" />
         <option value="$PROJECT_DIR$/italiandirect/templates/italiandirect/FinalResults.html" />
         <option value="$PROJECT_DIR$/italiandirect/templates/italiandirect/AuctionResultsEmployer.html" />
@@ -115,13 +129,15 @@
         <option value="$PROJECT_DIR$/endsurvey/views.py" />
         <option value="$PROJECT_DIR$/endsurvey/templates/endsurvey/Results.html" />
         <option value="$PROJECT_DIR$/italiantutorial/models.py" />
-        <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/OverallStructure.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_payoffs.html" />
+        <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/italianwage/models.py" />
+        <option value="$PROJECT_DIR$/italiandirect/models.py" />
       </list>
     </option>
   </component>
@@ -579,24 +595,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/italiandirect/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="130" column="35" lean-forward="true" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/italianwage/templates/italianwage/FinalResults.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/italianwage/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="125" column="32" lean-forward="false" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -681,28 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="84" column="37" lean-forward="false" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2085">
-          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -743,6 +727,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="137" column="34" lean-forward="false" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italianwage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1229">
+          <caret line="84" column="37" lean-forward="false" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiandirect/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
