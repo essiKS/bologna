@@ -138,7 +138,6 @@ def get_task():
     }
 
 
-
 def work_connect(message, worker_code, player_pk):
     print('worker connected')
     new_task = get_task()

@@ -62,9 +62,9 @@ class Auction(EmployerPage):
 
     def before_next_page(self):
         closed_contract = self.player.contract.filter(accepted=True)
-        self.player.matched = closed_contract
-        if closed_contract.exists():
+        if closed_contract.work_to_do.filter(accepted=True).exists():
             self.player.wage_offer = closed_contract.first().amount
+            self.player.matched = closed_contract
         else:
             self.player.matched = 0
         self.player.offers_dump = self.player.offers.values()
@@ -125,6 +125,7 @@ class AuctionResultsEmployer(EmployerPage):
                 closed_contract = self.player.contract.get(accepted=True)
             return {'initial_wage': closed_contract.amount,
                     'final_wage': closed_contract.amount_updated,}
+        # Something goes really wrong here if matched is missing the value.
 
 
 class AuctionResultsWorker(WorkerPage):
