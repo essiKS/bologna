@@ -81,9 +81,9 @@ class Auction(EmployerPage):
 
     def before_next_page(self):
         closed_contract = self.player.contract.filter(accepted=True)
-        self.player.matched = closed_contract
         if closed_contract.exists():
             self.player.wage_offer = closed_contract.first().amount
+            self.player.matched = closed_contract
         else:
             self.player.matched = 0
         self.player.offers_dump = self.player.offers.values()

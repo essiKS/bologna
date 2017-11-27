@@ -29,7 +29,6 @@ class Constants(BaseConstants):
     step = 5
     offer_range = list(range(lower_boundary,upper_boundary, step))
     max_task_amount = 10
-    random_list = random.sample(range(1, players_per_group), num_employers)
 
 class Subsession(BaseSubsession):
     # what is this?
@@ -65,6 +64,8 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             paying_rounds = random.sample(range(1, Constants.num_rounds), 3)
             self.session.vars['paying_rounds'] = paying_rounds
+            random_list = random.sample(range(1, Constants.players_per_group), Constants.num_employers)
+            self.session.vars['roles'] = random_list
 
     def vars_for_admin_report(self):
         total_payoffs = sorted([p.total_payoff for p in self.get_players()])
@@ -127,7 +128,7 @@ class Player(BasePlayer):
     total_payoff = models.CurrencyField()
 
     def role(self):
-        for each in Constants.random_list:
+        for each in self.session.vars['roles']:
             if self.participant.id_in_session == each:
                 return 'employer'
         if self.role != 'employer':
