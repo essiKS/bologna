@@ -37,7 +37,7 @@
     <p> Hai assunto un lavoratore con l'offerta di salario iniziale di <b>{{ player.wage_offer }}</b>,
 segnata qui sotto con uno sfondo <b><span class="chosenbutton">azzurro</span></b>.</p>
 
-    <p> Cliccando su uno di questi pulsanti, invierai l’offerta finale: </p>
+    <p> Puoi scegliere il salario finale cliccando su uno di questi pulsanti: </p>
         <form>
             {% for offer in Constants.offer_range %}
                 {% if offer == player.wage_offer %}
