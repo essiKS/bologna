@@ -8,7 +8,7 @@
 {% block content %}
     <p style="margin-left: 40px"> <i>  La fase di assunzione è terminata.
         Risultato: {{ group.num_contracts_closed |json }} <span id="scon">lavoratori </span> sono stati assunti
-        con *i salari* di: {{ group.wage_list }}.
+        con i seguenti salari: {{ group.wage_list }}.
         In questo round, <span id="emps_unmatched"> </span> <span id="semps">datori di lavoro</span>
         e <span id="workers_unmatched"> </span> <span id="sworks"> lavoratori </span> sono senza contratto. </i> </p>
 

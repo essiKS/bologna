@@ -24,7 +24,7 @@ mentre il salario finale è <b>{{ final_wage }}.</b> </p>
 {% endif %}
 
 {% if player.matched == 1 and player.tax_outcome == 1 and player.treatment != "no_taxes" %}
-    <p> Non ci sono tasse impreviste per questo periodo. </p>
+    <p> Non ci sono tasse per questo periodo. </p>
 {% elif player.matched == 1 and player.tax_outcome == 2 and player.treatment != "no_taxes" %}
     <p> Si applica una <b> tassa del 20 % sui ricavi del datore di lavoro</b>. </p>
 {% elif player.matched == 1 and player.tax_outcome == 3 and player.treatment != "no_taxes" %}

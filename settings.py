@@ -95,6 +95,23 @@ mturk_hit_settings = {
         # qualification.Requirement('YOUR_QUALIFICATION_ID_HERE', 'DoesNotExist')
     ]
 }
+# ROOM
+ROOM_DEFAULTS = {}
+
+ROOMS = [
+    {
+        'name': 'Bologna_lab',
+        'display_name': 'BLESS',
+        'participant_label_file': 'labels.txt',
+    },
+    {
+        'name': 'econ_lab',
+        'display_name': 'Experimental Economics Lab',
+    },
+]
+
+
+
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
