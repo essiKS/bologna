@@ -1,17 +1,18 @@
 <h3> Il lavoro </h3>
 
-<p> I lavoratori assunti hanno <b>5 minuti</b> per lavorare. Possono tentare <b>al massimo 10 compiti</b> in totale.
+<p> I lavoratori assunti hanno <b>5 minuti</b> per lavorare,
+    durante i quali possono svolgere <b>al massimo 10 compiti</b> in totale.
     Per ogni compito ci sono due riquadri, ognuno contenente 100 numeri:
-    <b>devi trovare il numero più grande in ciascun riquadro e poi sommarli</b>. </p>
+    <b>dovrai trovare il numero più grande in ciascun riquadro e poi sommare i due numeri trovati.</b> <p>
 
-<p> Ogni compito correttamente svolto <b>dà al datore di lavoro un ricavi di
+
+<p> Ogni compito correttamente svolto <b>dà al datore di lavoro un ricavo di
     20 punti</b>{% if player.treatment == 'all_taxes' or player.treatment == 'employer_tax' %},
     a meno che non ci sia una tassa sui ricavi del datore,
-    in qual caso ogni compito corretto vale 16 punti. {% else %}.{% endif %}
-
-    Le risposte sbagliate non valgono niente, ma contano come 'compiti tentati'.
-    I lavoratori possono inviare una sola risposta per compito.</p>
+    in qual caso ogni compito corretto vale 16 punti.{% else %}.{% endif %}
+    Le risposte sbagliate non danno alcun guadagno, ma contano come 'compiti tentati'.
+    I lavoratori possono inviare una sola risposta per compito. <p>
 
     <p> <b>Esempio:</b> Il numero più grande nel riquadro di sinistra è 99
         e il numero più grande nel riquadro di destra è 65,
-        entrambi segnati con un cerchio rosso. La loro somma è 99+65=164; questa è la risposta da inviare! </p>
+        entrambi segnati con un cerchio rosso. La loro somma è 99+65=164; <b>164</b> è la risposta da inviare! </p>

@@ -5,10 +5,14 @@
         tassazione</b> in vigore durante il round (troverai più informazioni sui possibili sistemi di tassazione
         nella prossima pagina di istruzioni). </p>
 {% endif %}
+
     <p> La fase di assunzione dura al massimo <b>2 minuti</b>.
+        Ci sono <b>5</b> datori di lavoro e <b>7</b> lavoratori nel mercato.
         Ogni datore di lavoro può pubblicare la propria offerta su una piattaforma pubblica.
-        L'offerta deve essere <b>tra 30 e 100 punti</b>, andando di cinque in cinque (ovvero 30, 35, 40, 45..) e
-        può essere modificata finché non viene accettata, ma non può essere cancellata interamente.
+        L'offerta deve essere <b>tra 30 e 100 punti</b>, in incrementi di 5 punti, e
+        <b>può essere modificata finché non viene accettata</b>, ma non può essere cancellata interamente.
+    </p>
+    <p>
         Un lavoratore può accettare una qualunque delle offerte disponibili.
         Una volta accettata, l'offerta viene rimossa dalla piattaforma.
         Chi è stato assunto lavorerà per quel datore di lavoro per le rimanenti fasi del round.
@@ -16,33 +20,31 @@
         Tutte le offerte ed eventuali modifiche sono pubblicate in <b>tempo reale</b>, e posizionate secondo un ordine
         casuale.</p>
 
-
     <p> Se un'offerta non è accettata entro i 2 minuti, il datore di lavoro non sarà in grado di assumere nessuno.
         Allo stesso modo, se un lavoratore non accetta alcuna offerta entro i 2 minuti, oppure tutte e 5 le offerte
         sono già state accettate da altri lavoratori, il mercato viene chiuso e il lavoratore sarà disoccupato durante quel
         round. Su 7 lavoratori, almeno <b>2 sono disoccupati</b> per round. </p>
 
-        <p><b>Senza un contratto</b>, lavoratori e datori di lavoro non parteciperanno attivamente alle rimanenti fasi del round:
-        un datore di lavoro guadagnerà <b>0 punti</b> e un lavoratore <b>20 punti</b>. Nonostante ciò,
-        entrambi ricominceranno da capo nel round successivo. </p>
+        <p><b>Senza un contratto</b>, lavoratori e datori di lavoro non parteciperanno attivamente
+        alle rimanenti fasi del round: un datore di lavoro guadagnerà
+        <b>0 punti</b> e un lavoratore <b>20 punti</b>, come indennità di disoccupazione.
+        Nonostante ciò, entrambi ricominceranno da capo nel round successivo. </p>
 
-{% if player.timeline == 'direct' %}
-    <p> Se il datore assume un lavoratore, il datore riceve 40 punti.
-        Egli ottiene, inoltre, dei ricavi dal lavoro dell'assunto.
-        A questi va poi dedotto il salario del lavoratore.
-        Il guadagno del lavoratore consiste, invece, nel suo salario.
+    <p> Se il datore assume un lavoratore, il datore riceve 40 punti ed ottiene,
+        inoltre, dei ricavi dal lavoro dell'assunto.
+        A questi {% if player.treatment == "employer_tax" %} vanno poi sottratti {% else %} va poi sottratto {% endif %}
+        il salario {% if player.timeline == 'indirect' %} finale {% endif %} del
+        lavoratore{% if player.treatment == "employer_tax" %}, ed eventuali tasse,
+        il cui funzionamento verra spiegato nella prossima parte{% endif %}.
+        Il guadagno del lavoratore consiste invece nel suo
+        salario{% if player.timeline == 'indirect' %}finale{% endif %}{% if player.treatment == "worker_tax" %},
+        e meno eventuali tasse, il cui funzionamento verra spiegato nella prossima parte{% endif %}.
+        {% if player.treatment == "all_taxes" %}
+        Entrambi i guadagni potrebbero essere soggetti a tassazione, come verrà spiegato nella prossima parte.
+        {% endif %} </p>
 
-{% elif player.timeline == 'indirect' %}
-    <p> Se il datore assume un lavoratore, il datore riceve 40 punti.
-        Egli ottiene, inoltre, dei ricavi dal lavoro dell'assunto.
-        A questi va poi dedotto il salario finale del lavoratore.
-        Il guadagno del lavoratore consiste invece nel suo salario finale.
-{% endif %}
-{% if player.treatment != 'no_taxes' %}
-        Ci potrebbero essere delle tasse - come verrà spiegato nella prossima parte. </p>
-{% endif %}
+    <p> L'esperimento è anonimo: i lavoratori non conosceranno l'identità del proprio datore di lavoro,
+        e allo stesso modo i datori di lavoro non conosceranno l'identità del proprio lavoratore. </p>
 
-  <p> I lavoratori non conosceranno l'identità del proprio datore di lavoro, e allo stesso modo i datori di lavoro
-      non conosceranno l'identità del proprio lavoratore. Ad ogni modo, a tutti verranno comunicati i risultati aggregati
-      della fase di assunzione.
-  </p>
+    <p> Dopo la fase di assunzione, tutti i partecipanti ricevono i risultati delle
+        assunzioni totali: quanti lavoratori sono stati assunti e con quale salario.</p>

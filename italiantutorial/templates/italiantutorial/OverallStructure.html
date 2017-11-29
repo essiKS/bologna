@@ -5,53 +5,58 @@
     Istruzioni: Struttura Generale
 {% endblock %}
 
-{% block content %}
-<head>
+{% block styles %}
  <style>
      h4 {
          margin-left: 10px;
      }
  </style>
-</head>
+{% endblock %}
+
+{% block content %}
+
+
     <p>
      L'esperimento consiste in 8 round.
     {% if player.timeline == 'direct' and player.treatment != 'no_taxes' %}
-        <b>All'inizio di ciascun round viene annunciato lo schema di tassazione</b> in vigore durante il round.
+    <b> All'inizio di ciascun round viene annunciato lo schema di tassazione</b> in vigore durante il round.
         Dopo l'annuncio, ogni round prevede le seguenti fasi:
     {% else %}
     Ogni round prevede le seguenti fasi:
     {% endif %}
     </p>
-  <h4>1º fase: Assunzione</h4>
-     <p> Ogni datore di lavoro può fare un'offerta {% if player.timeline == 'indirect' %} iniziale {% endif %}
-        riguardante il salario su una piattaforma pubblica, ed ogni lavoratore può accettare una qualunque di queste offerte.
-         Una volta che l'offerta è stata accettata,
-         chi è stato assunto lavorerà per quel datore di lavoro per le rimanenti fasi del round.
-  {% if player.timeline == 'direct' %}
-    Successivamente, tutti i risultati riguardanti le assunzioni (in forma aggregata) sono resi noti.
-    </p>
-
-  <h4> 2º fase: Lavoro  </h4>
- {%  elif player.timeline == 'indirect' and player.treatment != 'no_taxes' %}
-  </p>
-  <h4> 2º fase: Tasse e salario finale </h4>
-    <p> I risultati della fase di assunzione (in forma aggregata) sono resi noti, ed eventuali tasse vengono annunciate.
-        I datori di lavoro possono ora decidere quale salario finale offrire. </p>
-  <h4> 3º fase: Lavoro </h4>
-  {%  elif player.timeline == 'indirect' and player.treatment == 'no_taxes' %}
-  <h4>2º fase: Risultati assunzione e salario finale</h4>
-<p>
-    I risultati della fase di assunzione (in forma aggregata) sono resi noti.
-    I datori di lavoro possono ora decidere quale salario finale offrire.
-</p>
-  <h4>3º fase: Lavoro </h4>
-  {%  endif %}
+<h4> 1º fase: Assunzione </h4>
     <p>
-    Ogni assunto ha 5 minuti per compiere un certo lavoro.
-    <!--i wouldnt know how to translate 'real effort task"-->
+    Ogni datore di lavoro può fare un'offerta di salario {% if player.timeline == 'indirect' %} iniziale {% endif %}
+    ed ogni lavoratore può accettare una qualunque di queste offerte.
+    {%  if player.timeline == 'indirect' %}
+    Si noti che tale salario potrebbe cambiare nella fase successiva. {% endif %}
+    Una volta che l'offerta è stata accettata,
+    chi è stato assunto lavorerà per quel datore di lavoro per le rimanenti fasi del round.
 
+    {% if player.timeline == 'direct' %}
+    I risultati generali della fase di assunzione sono resi noti. </p>
+
+    <h4> 2º fase: Lavoro  </h4>
+    {%  elif player.timeline == 'indirect' and player.treatment != 'no_taxes' %}
+    </p>
+    <h4> 2º fase: Tasse e salario finale </h4>
+    <p> I risultati generali della fase di assunzione sono resi noti, ed eventuali tasse vengono annunciate.
+        I datori di lavoro possono ora decidere quale salario finale offrire. </p>
+    <h4> 3º fase: Lavoro </h4>
+    {%  elif player.timeline == 'indirect' and player.treatment == 'no_taxes' %}
+    <h4>2º fase: Risultati assunzione e salario finale</h4>
+    <p>
+    I risultati generali della fase di assunzione sono resi noti.
+    I datori di lavoro possono ora decidere quale salario finale offrire.
+    </p>
+    <h4>3º fase: Lavoro </h4>
+    {% endif %}
+    <p>
+    Ogni assunto ha 5 minuti per compiere il lavoro assegnato.
     Una volta trascorsi i 5 minuti, i risultati del lavoro sono comunicati al rispettivo datore di lavoro,
-    e vengono calcolati i conseguenti guadagni. </p><br>
+    e vengono calcolati i guadagni.
+    </p><br>
 
     <p> Cliccando su "Successivo", passerai alle istruzioni più dettagliate. </p>
 

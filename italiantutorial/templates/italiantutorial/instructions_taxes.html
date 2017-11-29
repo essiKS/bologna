@@ -13,56 +13,57 @@
 {% if player.wage_offer > 0 %}
     <p style="margin-left: 40px"> <i>  La fase di assunzione è terminata. Risultati complessivi:
     1 lavoratore è stato assunto con l'iniziale offerta di salario:
-    {{ player.wage_offer|json }} (...lista di tutti i salari accettati). <br>
+    {{ player.wage_offer|json }} (...i generale, lista di tutti i salari accettati). <br>
     In questo round, 0 datori di lavoro e 0 lavoratori sono senza contratto. </i>
 </p>
 {% elif player.wage_offer == 0 %}
     <p style="margin-left: 40px"> <i>  La fase di assunzione è terminata. Risultati complessivi: 0 lavoratori sono stati assunti. <br>
     In questo round, 1 datore di lavoro e 1 lavoratore sono senza contratto. </i></p>
-
 {% endif %}
 <!-- Common information ends-->
+
+
 {%  if player.timeline == 'indirect' and player.treatment == 'all_taxes' %}
-<!-- Translate -->
-    <p> Una volta ricevuti questi risultati, viene reso noto quale schema di tassazione sarà in vigore durante il
-        round. Lo schema sarà scelto casualmente dal computer. </p>
+    <p> Una volta ricevuti questi risultati, viene reso noto quale schema di tassazione sarà in vigore durante il round.
+        Lo schema è scelto casualmente dal computer.</p>
 
     <p> Tre opzioni sono possibili: </p>
 <ul>
-    <li><b>Nessuna tassa</b>, con probabilità 2/3 (66.7 %)</li>
+    <li><b>Nessuna tassa</b>, con probabilità 4/6 (66.7 %)</li>
     <li><b>Tassa </b> del 20 % <b>sui ricavi del datore</b> provenienti dal lavoro dell’asunto, con probabilità 1/6 (16,7 %) </li>
     <li><b>Tassa</b> del 20 % <b>sul reddito del lavoratore</b>, con probabilità 1/6 (16,7%) </li>
 </ul>
-    <p> In generale, c'è il <b>33 % di probabilità</b> che una tassa venga applicata,
-        e il 67 % di probabilità che non ci siano tasse; ovvero, in media un round su 3 prevede una tassa. </p>
-    <p> Il tipo di tassa verrà scelto casualmente dal computer.</p>
+    <p> In totale, c'è il <b>33 % di probabilità</b> che una tassa venga applicata,
+        e il 67 % di probabilità che non ci siano tasse; ovvero, in media un round su 3 prevede una tassa.
+        Se c'è una tassa, il tipo di tassa è scelto casualmente dal computer, ognuna con uguale probabilità. </p>
+
+
 {% elif player.timeline == 'indirect' and player.treatment == 'employer_tax' %}
-<!-- Translate -->
-    <p> Una volta ricevuti questi risultati, viene reso noto quale schema di tassazione sarà in vigore durante il
-        round. Lo schema sarà scelto casualmente dal computer. </p>
+    <p> Una volta ricevuti questi risultati, viene reso noto quale schema di tassazione sarà in vigore durante il round.
+        Lo schema è scelto casualmente dal computer.</p>
+
     <p> Due opzioni sono possibili: </p>
 <ul>
     <li><b>Nessuna tassa</b></li>
     <li><b>Tassa</b> del 20 % <b>sui ricavi del datore</b> provenienti dal lavoro dell'assunto</li>
 </ul>
-
-    <p> C'è il <b>33 % di probabilità</b> che la tassa sui ricavi del datore di lavoro venga applicata,
+    <p> C'è il <b>33 % di probabilità</b> che la tassa venga applicata,
         e il 67 % di probabilità che non ci siano tasse;
         ovvero, in media un round su 3 prevede una tassa.</p>
 
+
 {% elif player.timeline == 'indirect' and player.treatment == 'worker_tax' %}
-<!-- Translate -->
+
     <p> Una volta ricevuti questi risultati, viene reso noto quale schema di tassazione sarà in vigore durante il
-        round. Lo schema sarà scelto casualmente dal computer. </p>
+        round. Lo schema è scelto casualmente dal computer. </p>
     <p> Tre opzioni sono possibili: </p>
 <ul>
-    <li><b>Nessuna tassa</b>, con probabilità 2/3 (66,7 %)</li>
-    <li><b>Tassa del 20 % sui ricavi del datore</b> provenienti dal lavoro dell’asunto, con probabilità 1/6 (16,7 %) </li>
-    <li><b>Tassa del 20 % sul reddito del lavoratore</b>, con probabilità 1/6 (16,7%) </li>
+    <li><b>Nessuna tassa</b></li>
+    <li><b>Tassa del 20 % sul reddito del lavoratore</b> </li>
 </ul>
-    <p> In generale, c'è il 33 % di probabilità che una tassa venga applicata,
-        e il 67 % di probabilità che non ci siano tasse; ovvero, in media un round su 3 prevede una tassa. </p>
-    <p> Il tipo di tassa verrà scelto casualmente dal computer.</p>
+    <p> C'è il <b>33 % di probabilità</b> che la tassa venga applicata,
+        e il 67 % di probabilità che non ci siano tasse;
+        ovvero, in media un round su 3 prevede una tassa. </p>
 
 {% elif player.timeline == 'direct' and player.treatment == 'all_taxes' %}
     <h3> Riguardo le tasse </h3>
@@ -74,9 +75,9 @@
     <li><b>Tassa</b> del 20 % <b>sui ricavi del datore</b> provenienti dal lavoro dell'assunto</li>
     <li><b>Tassa</b> del 20 % <b>sul reddito del lavoratore</b> </li>
 </ul>
-        <p> In generale, c'è il <b>33 % di probabilità</b> che una tassa venga applicata,
+        <p> In totale, c'è il <b>33 % di probabilità</b> che una tassa venga applicata,
         e il 67 % di probabilità che non ci siano tasse; ovvero, in media un round su 3 prevede una tassa. </p>
-    <p> Il tipo di tassa verrà scelto casualmente dal computer.</p>
+        <p> Se c'è una tassa, il tipo di tassa è scelto casualmente dal computer, ognuna con uguale probabilità. </p>
 
 
 {% elif player.timeline == 'direct' and player.treatment == 'employer_tax' %}
@@ -88,7 +89,7 @@
     <li><b>Tassa</b> del 20 % <b>sui ricavi del datore</b> provenienti dal lavoro dell'assunto</li>
 </ul>
 
-    <p> C'è il <b>33 % di probabilità</b> che la tassa sui ricavi del datore di lavoro venga applicata,
+    <p> C'è il <b>33 % di probabilità</b> che una tassa venga applicata,
         e il 67 % di probabilità che non ci siano tasse; ovvero,
         in media un round su 3 prevede una tassa.</p>
 
@@ -102,19 +103,24 @@
     <li><b>Tassa</b> del 20 % <b>sul reddito del lavoratore</b> </li>
 </ul>
 
-    <p> C'è il <b>33 % di probabilità</b> che la tassa sul reddito del lavoratore venga applicata,
+    <p> C'è il <b>33 % di probabilità</b> che una tassa venga applicata,
         e il 67 % di probabilità che non ci siano tasse;
         ovvero, in media un round su 3 prevede una tassa.</p>
 {% endif %}
 
 {% if player.treatment == 'all_taxes' or player.treatment == 'employer_tax' %}
     <p><b> La tassa sui ricavi del datore di lavoro</b> riduce il guadagno che questi ottiene per ogni compito:
-        ogni compito correttamente eseguito vale 16 punti invece dei 20 punti in caso di nessuna tassa.
-        (I 40 punti ottenuti dalla sola assunzione non saranno toccati.)
+    ogni compito correttamente eseguito vale 16 punti invece dei 20 punti in caso di nessuna tassa.
+        I 40 punti ottenuti dalla sola assunzione non saranno toccati. </p>
+
 {% endif %}
-{% if player.treatment == 'all_taxes' or player.treatment == 'worker_tax' %}
+{% if player.timeline == 'direct' and player.treatment == 'all_taxes' or player.timeline == 'direct' and player.treatment == 'worker_tax' %}
+
     <p><b> La tassa sul reddito del lavoratore</b> riduce l'ammontare salariale che questi riceve del 20 %.
         Ogni datore di lavoro paga comunque il salario totale. </p>
+{% elif player.timeline == 'indirect' and player.treatment == 'all_taxes' or player.timeline == 'indirect' and player.treatment == 'worker_tax' %}
+    <p><b> La tassa sul reddito del lavoratore</b> riduce l'ammontare salariale che questi riceve del 20 %.
+        Ogni datore di lavoro paga comunque il salario finale totale. </p>
 {% endif %}
 {% if player.treatment != 'no_taxes' %}
 <p>
@@ -122,14 +128,8 @@
 </p>
 {% endif %}
 {% if player.timeline == 'indirect' %}
-
-    <p> <b>Prima di passare alla fase successiva, i datori di lavoro devono decidere il salario finale. </b>
-    Il salario finale deve essere un numero tra 30 e 100, andando di 5 in 5 (ovvero 30, 35, 40, 45...).
-    Solo il lavoratore che è stato assunto sarà informato del proprio salario finale - nessun altro partecipante
-    ne verrà a conoscenza. </p>
-
-
-{% elif player.timeline == 'direct' and player.treatment == 'no_taxes' %}
-
-<p> Il lavoratore che è stato assunto procede alla fase di lavoro. </p>
+    <p><b> Prima di passare alla fase successiva, i datori di lavoro devono decidere il salario finale. </b>
+    Il salario finale deve essere un numero tra 30 e 100, in incrementi di 5 punti.
+    Solo il lavoratore che è stato assunto sarà informato del proprio salario finale -
+    nessun altro partecipante ne verrà a conoscenza. </p>
 {% endif %}

@@ -8,94 +8,115 @@
         e del conseguente <b>guadagno finale di entrambi</b>,
         ma non dei risultati degli altri partecipanti.</p>
 
-    <p> <b>Se il partecipante non ha un contratto</b>, i guadagni sono i seguenti:</p>
+    <h4> Scenario A <br> Se il partecipante non ha un contratto:</h4>
 <ul>
     <li>Guadagno del datore di lavoro = 0 punti </li>
     <li>Guadagno del lavoratore = 20 punti</li>
 </ul>
 
+
 {% if player.timeline == 'indirect' and player.treatment != 'no_taxes' %}
-    <p> <b>Se il partecipante ha un contratto</b> (e non ci sono tasse): </p>
+    <h4> Scenario B <br> Se il partecipante ha un contratto e non ci sono tasse: </h4>
 <ul>
     <li>Guadagno del datore di lavoro = 40 - salario finale + 20 * numero di compiti corretti</li>
     <li>Guadagno del lavoratore = salario finale </li>
 </ul>
 
-    <p> In altre parole, quando assume qualcuno, il datore di lavoro riceve 40 punti,
-        paga il salario finale, e ottiene dei ricavi per ogni compito correttamente svolto dal lavoratore.
-        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
-        Il guadagno di un lavoratore consiste, invece, nel salario finale.</p>
+    <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
+    paga il salario finale e ottiene dei ricavi per ogni compito correttamente svolto.
+    Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+    Il guadagno di un lavoratore consiste, invece, nel salario finale.</p>
 
 {% elif player.timeline == 'direct' and player.treatment != 'no_taxes' %}
-    <p> <b>Se il partecipante ha un contratto</b> (e non ci sono tasse): </p>
+    <h4> Scenario B <br> Se il partecipante ha un contratto e non ci sono tasse: </h4>
 <ul>
     <li>Guadagno del datore di lavoro = 40 - salario + 20 * numero di compiti corretti</li>
     <li>Guadagno del lavoratore = salario </li>
 </ul>
 
     <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
-        paga il salario, e ottiene dei ricavi per ogni compito correttamente svolto.
-        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
-        Il guadagno di un lavoratore consiste, invece, nel salario.</p>
+    paga il salario e ottiene dei ricavi per ogni compito correttamente svolto.
+    Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+    Il guadagno di un lavoratore consiste, invece, nel salario.</p>
 {% elif player.timeline == 'indirect' and player.treatment == 'no_taxes' %}
-        <p> <b>Se il partecipante ha un contratto</b>: </p>
+    <h4> Scenario B <br> Se il partecipante ha un contratto: </h4>
 <ul>
     <li>Guadagno del datore di lavoro = 40 - salario finale + 20 * numero di compiti corretti</li>
     <li>Guadagno del lavoratore = salario finale </li>
 </ul>
 
     <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
-        paga il salario finale, e ottiene dei ricavi per ogni compito correttamente svolto.
-        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
-        Il guadagno di un lavoratore consiste, invece, nel salario finale.</p>
+    paga il salario finale e ottiene dei ricavi per ogni compito correttamente svolto.
+    Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+    Il guadagno di un lavoratore consiste, invece, nel salario finale.</p>
     {% elif player.timeline == 'direct' and player.treatment == 'no_taxes' %}
-    <p> <b>Se il partecipante ha un contratto</b>: </p>
+    <h4> Scenario B <br> Se il partecipante ha un contratto: </h4>
 <ul>
     <li>Guadagno del datore di lavoro = 40 - salario + 20 * numero di compiti corretti</li>
     <li>Guadagno del lavoratore = salario </li>
 </ul>
 
     <p> In altre parole, il datore di lavoro riceve 40 punti quando assume un lavoratore,
-        paga il salario, e ottiene dei ricavi per ogni compito correttamente svolto.
-        Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
-        Il guadagno di un lavoratore consiste, invece, nel salario.</p>
+    paga il salario e ottiene dei ricavi per ogni compito correttamente svolto.
+    Ciò che rimane è il guadagno del datore di lavoro, e si noti che può anche essere negativo.
+    Il guadagno di un lavoratore consiste, invece, nel salario.</p>
 {% endif %}
-
+<!-- The next scenario C!-->
 {% if player.timeline == 'indirect' and player.treatment == 'employer_tax' or player.timeline == 'indirect' and player.treatment == 'all_taxes' %}
-    <p>
-        <b>Nel caso di una tassa sui ricavi del datore di lavoro</b>,
-        il guadagno per ogni compito correttamente svolto è ridotto a 16 (da 20) e quindi il guadagno totale è dato da:<p>
+    <h4> Scenario C <br> Se il partecipante ha un contratto c'è una tassa sui ricavi del datore di lavoro: </h4>
+    <p>il guadagno per ogni compito correttamente svolto è ridotto a 16 (da 20) e quindi il guadagno totale è dato da:<p>
 <ul>
     <li>Guadagno del datore di lavoro = 40 - salario finale + <b>16 * numero di compiti corretti</b></li>
 </ul>
+    <p> Il guadagno del lavoratore è come nello scenario B.</p>
 {% elif player.timeline == 'direct' and player.treatment == 'employer_tax' or player.timeline == 'direct' and player.treatment == 'all_taxes' %}
-    <p>
-        <b>Nel caso di una tassa sui ricavi del datore di lavoro</b>,
-        il guadagno per ogni compito correttamente svolto è ridotto a 16 (da 20) e quindi il guadagno totale è dato da:<p>
+    <h4> Scenario C <br> Se il partecipante ha un contratto c'è una tassa sui ricavi del datore di lavoro: </h4>
+    <p> il guadagno per ogni compito correttamente svolto è ridotto a 16 (da 20) e quindi il guadagno totale è dato da:<p>
 <ul>
-    <li>Guadagno del datore di lavoro = 40 - salario + <b>16  * numero di compiti corretti</b></li>
+    <li>Guadagno del datore di lavoro = 40 - salario + <b>16 * numero di compiti corretti</b></li>
 </ul>
+    <p> Il guadagno del lavoratore è come nello scenario B.</p>
 {% endif %}
-{% if player.timeline == 'indirect' and player.treatment == 'worker_tax' or player.timeline == 'indirect' and player.treatment == 'all_taxes' %}
-    <p> <b>Nel caso di una tassa sul reddito del lavoratore</b>,
-        il guadagno del lavoratore è dato dal salario finale meno le tasse: </p>
+
+{% if player.timeline == 'indirect' and player.treatment == 'worker_tax' %}
+    <h4> Scenario C <br> Se il partecipante ha un contratto c'è una tassa sul reddito del lavoratore: </h4>
+        <p> il guadagno del lavoratore è dato dal salario finale meno le tasse: </p>
 <ul>
-    <li>Guadagno del lavoratore = salario finale <b>- 0.20 * salario finale</b> </li>
+    <li>Guadagno del lavoratore = salario finale <b>- 20 % del salario finale</b> </li>
 </ul>
-{% elif player.timeline == 'direct' and player.treatment == 'worker_tax' or player.timeline == 'direct' and player.treatment == 'all_taxes' %}
-        <p> <b>Nel caso di una tassa sul reddito del lavoratore</b>,
-        il guadagno del lavoratore è dato dal salario meno le tasse: </p>
+    <p> Il guadagno del datore di lavoro è come nello scenario B.</p>
+{% elif player.timeline == 'indirect' and player.treatment == 'all_taxes' %}
+    <h4> Scenario D <br> Se il partecipante ha un contratto c'è una tassa sul reddito del lavoratore: </h4>
+        <p> il guadagno del lavoratore è dato dal salario finale meno le tasse: </p>
 <ul>
-    <li>Guadagno del lavoratore = salario <b>- 0.20 * salario</b> </li>
+    <li>Guadagno del lavoratore = salario finale <b>- 20 % del salario finale</b> </li>
 </ul>
+    <p> Il guadagno del datore di lavoro è come nello scenario B.</p>
+{% elif player.timeline == 'direct' and player.treatment == 'worker_tax' %}
+    <h4> Scenario C <br> Se il partecipante ha un contratto c'è una tassa sul reddito del lavoratore: </h4>
+        <p> il guadagno del lavoratore è dato dal salario meno le tasse: </p>
+<ul>
+    <li>Guadagno del lavoratore = salario <b>- 20 % del salario</b> </li>
+</ul>
+    <p> Il guadagno del datore di lavoro è come nello scenario B.</p>
+
+{% elif player.timeline == 'direct' and player.treatment == 'all_taxes' %}
+    <h4> Scenario D <br> Se il partecipante ha un contratto c'è una tassa sul reddito del lavoratore: </h4>
+        <p> il guadagno del lavoratore è dato dal salario meno le tasse: </p>
+<ul>
+    <li>Guadagno del lavoratore = salario <b>- 20 % del salario </b> </li>
+</ul>
+    <p> Il guadagno del datore di lavoro è come nello scenario B.</p>
 {% endif %}
+<p>
 {% if player.treatment == 'all_taxes' %}
-    <p> I due sistemi di tassazione non verranno mai applicati simultaneamente.</p>
+I due sistemi di tassazione sono alternativi, non verranno mai applicati simultaneamente.
 {% endif %}
-<!-- information common to all -->
-    <p> I punti ottenuti in laboratorio verranno convertiti in Euro secondo questo tasso di cambio: 10 punti = 1 euro.
-        Oltre alla quota di partecipazione di 5 euro, <b>I partecipanti verranno remunerati solo per tre round (sugli 8 totali),
+I punti ottenuti in laboratorio verranno convertiti in Euro secondo questo tasso di cambio: <b>10 punti = 1 euro</b>.
+    Oltre alla quota di partecipazione di 5 euro,
+    <b>i partecipanti verranno remunerati solo per tre round (sugli 8 totali),
         che verranno estratti casualmente alla fine dell'esperimento.</b> </p>
+
 
 {% block scripts %}
     <script>
