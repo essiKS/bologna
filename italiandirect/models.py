@@ -18,10 +18,10 @@ Adaptation of Fehr et al. 1993 auction.
 
 class Constants(BaseConstants):
     name_in_url = 'italiandirect'
-    players_per_group = 5
+    players_per_group = 12
     num_rounds = 8
     starting_time = 120
-    num_employers = 2
+    num_employers = 5
     num_workers = players_per_group - num_employers
     task_time = 300
     lower_boundary = 30
@@ -37,7 +37,7 @@ class Subsession(BaseSubsession):
     helper = 0
 
     def creating_session(self):
-        taxes = [1, 3, 1, 3, 1, 2, 1, 2]
+        taxes = [1, 3, 1, 2, 2, 1, 1, 1]
         tax_outcome = taxes[self.round_number - 1]
         if 'treatment' in self.session.config:
             if self.session.config['treatment'] == "no_taxes":
