@@ -73,7 +73,9 @@ Rimangono <b><span id="emps_left">{{ Constants.num_employers |json }}</span></b>
     $("button.offer").on("click", function () {
         $("#standing_offer").html($(this).data('offer'));
         console.log('offer clicked');
-        create_or_update_contract($(this).data('offer'));
+        if ($(this).data('offer') !== $("#standing_offer").val()) {
+            create_or_update_contract($(this).data('offer'));
+        }
     });
 
     // Splitting into two steps
