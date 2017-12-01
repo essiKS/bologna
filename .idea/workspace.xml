@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de4fd806-7f92-452b-9229-5b1c95411ac9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiandirect/templates/italiandirect/Auction.html" afterPath="$PROJECT_DIR$/italiandirect/templates/italiandirect/Auction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/OverallStructure.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/OverallStructure.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italianwage/templates/italianwage/Auction.html" afterPath="$PROJECT_DIR$/italianwage/templates/italianwage/Auction.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +48,8 @@
       <file leaf-file-name="Auction.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/italiandirect/templates/italiandirect/Auction.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+            <state relative-caret-position="283">
+              <caret line="77" column="37" lean-forward="true" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -64,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/italianwage/consumers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
-              <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+              <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -715,7 +710,7 @@
     <entry file="file://$PROJECT_DIR$/italianwage/consumers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
-          <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -730,8 +725,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/italiandirect/templates/italiandirect/Auction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+        <state relative-caret-position="283">
+          <caret line="77" column="37" lean-forward="true" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
           <folding />
         </state>
       </provider>
