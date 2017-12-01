@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de4fd806-7f92-452b-9229-5b1c95411ac9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +19,18 @@
       <file leaf-file-name="instructions_auction.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="46" column="102" lean-forward="false" selection-start-line="46" selection-start-column="102" selection-end-line="46" selection-end-column="102" />
+            <state relative-caret-position="452">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instructions_taxes.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="134" column="11" lean-forward="true" selection-start-line="134" selection-start-column="11" selection-end-line="134" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -33,11 +46,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstructionsWithQuestionnaire.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InstructionsWithQuestionnaire.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="750">
               <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Welcome.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllInstructions.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="100" column="72" lean-forward="false" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -85,7 +118,6 @@
         <option value="$PROJECT_DIR$/endsurvey/views.py" />
         <option value="$PROJECT_DIR$/endsurvey/templates/endsurvey/Results.html" />
         <option value="$PROJECT_DIR$/italiantutorial/models.py" />
-        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html" />
         <option value="$PROJECT_DIR$/italianwage/consumers.py" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/AuctionResultsEmployer.html" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/AuctionResultsWait.html" />
@@ -96,17 +128,18 @@
         <option value="$PROJECT_DIR$/italianwage/views.py" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/AfterAuctionDecision.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/OverallStructure.html" />
-        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" />
         <option value="$PROJECT_DIR$/labels.txt" />
-        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_payoffs.html" />
-        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_work.html" />
         <option value="$PROJECT_DIR$/italiandirect/models.py" />
         <option value="$PROJECT_DIR$/italianwage/models.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" />
+        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html" />
+        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html" />
+        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" />
+        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html" />
       </list>
     </option>
   </component>
@@ -374,6 +407,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="37" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -589,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1498">
-          <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labels.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -608,13 +635,6 @@
         <state relative-caret-position="1920">
           <caret line="128" column="9" lean-forward="true" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="19" column="61" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -641,26 +661,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/WorkTryOut.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="46" column="102" lean-forward="false" selection-start-line="46" selection-start-column="102" selection-end-line="46" selection-end-column="102" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,8 +710,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="750">
           <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="100" column="72" lean-forward="false" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/Welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="134" column="11" lean-forward="true" selection-start-line="134" selection-start-column="11" selection-end-line="134" selection-end-column="11" />
           <folding />
         </state>
       </provider>

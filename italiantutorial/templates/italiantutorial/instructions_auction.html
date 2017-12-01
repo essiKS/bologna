@@ -28,17 +28,18 @@
         <p><b>Senza un contratto</b>, lavoratori e datori di lavoro non parteciperanno attivamente
         alle rimanenti fasi del round: un datore di lavoro guadagnerà
         <b>0 punti</b> e un lavoratore <b>20 punti</b>, come indennità di disoccupazione.
-        Nonostante ciò, entrambi ricominceranno da capo nel round successivo. </p>
+        Nonostante ciò, entrambi ricominceranno da capo nel round successivo,
+        cioè, nella prossima fase di assunzione. Ci sono 8 round.  </p>
 
     <p> Se il datore assume un lavoratore, il datore riceve 40 punti ed ottiene,
         inoltre, dei ricavi dal lavoro dell'assunto.
         A questi {% if player.treatment == "employer_tax" %} vanno poi sottratti {% else %} va poi sottratto {% endif %}
         il salario {% if player.timeline == 'indirect' %} finale {% endif %} del
         lavoratore{% if player.treatment == "employer_tax" %}, ed eventuali tasse,
-        il cui funzionamento verra spiegato nella prossima parte{% endif %}.
+        il cui funzionamento verrà spiegato nella prossima parte{% endif %}.
         Il guadagno del lavoratore consiste invece nel suo
-        salario{% if player.timeline == 'indirect' %}finale{% endif %}{% if player.treatment == "worker_tax" %},
-        e meno eventuali tasse, il cui funzionamento verra spiegato nella prossima parte{% endif %}.
+        salario{% if player.timeline == 'indirect' %} finale{% endif %}{% if player.treatment == "worker_tax" %},
+        e meno eventuali tasse, il cui funzionamento verrà spiegato nella prossima parte{% endif %}.
         {% if player.treatment == "all_taxes" %}
         Entrambi i guadagni potrebbero essere soggetti a tassazione, come verrà spiegato nella prossima parte.
         {% endif %} </p>
