@@ -162,6 +162,7 @@ SESSION_CONFIGS = [
     },
 
 ]
+SENTRY_DSN = 'http://168f82a499d74f10962bac1044751c17:acec14636580498f8d76c0f07e398cf5@sentry.otree.org/245'
 
 # anything you put after the below line will override
 # oTree's default settings. Use with caution.
