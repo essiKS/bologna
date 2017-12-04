@@ -19,9 +19,9 @@ Adaptation of Fehr et al. 1993 auction.
 class Constants(BaseConstants):
     name_in_url = 'italiandirect'
     players_per_group = 12
-    num_rounds = 8
+    num_rounds = 9
     starting_time = 120
-    num_employers = 5
+    num_employers = 4
     num_workers = players_per_group - num_employers
     task_time = 300
     lower_boundary = 30
