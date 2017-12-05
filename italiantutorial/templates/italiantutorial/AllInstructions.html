@@ -30,9 +30,29 @@ div.tab button {
     transition: 0.3s;
 }
 
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+
 /* Change background color of buttons on hover */
 div.tab button:hover {
     background-color: #ddd;
+}
+
+div.tab button:hover .tooltiptext {
+    visibility: visible;
 }
 
 /* Create an active/current "tab button" class */
@@ -56,16 +76,24 @@ div.tab button.active {
   <button id='auction' type="button" class="tablinks" onclick="openCity(event, 'Auction')">Fase di assunzione</button>
     <!-- This title needs to be changed!!! not all have taxes!!! -->
     {% if player.timeline == "indirect" and player.treatment != "no_taxes" %}
-  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Tasse e salario finale</button>
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Tasse e salario finale
+  <span class="tooltiptext">sezione non ancora disponibile</span> </button>
+
     {% elif player.timeline == "indirect" and player.treatment == "no_taxes" %}
-  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e salario finale</button>
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e salario finale
+  <span class="tooltiptext">sezione non ancora disponibile</span></button>
     {% elif player.timeline == "direct" and player.treatment != "no_taxes" %}
-  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e tasse</button>
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione e tasse
+  <span class="tooltiptext">sezione non ancora disponibile</span></button>
     {% elif player.timeline == "direct" and player.treatment == "taxes" %}
-  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione </button>
+  <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione
+  <span class="tooltiptext">sezione non ancora disponibile</span></button>
     {% endif %}
-  <button id='work' type="button" class="tablinks" onclick="openCity(event, 'Work')">Il lavoro</button>
-  <button id='payoffs' type="button" class="tablinks" onclick="openCity(event, 'Payoffs')">I guadagni</button>
+  <button id='work' type="button" class="tablinks" onclick="openCity(event, 'Work')">Il lavoro
+  <span class="tooltiptext">sezione non ancora disponibile</span></button>
+  <button id='payoffs' type="button" class="tablinks" onclick="openCity(event, 'Payoffs')">I guadagni
+  <span class="tooltiptext">sezione non ancora disponibile</span> </button>
+
 </div>
 
 <div id="Auction" class="tabcontent">

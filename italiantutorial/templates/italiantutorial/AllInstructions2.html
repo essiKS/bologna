@@ -35,6 +35,24 @@ div.tab button:hover {
     background-color: #ddd;
 }
 
+div.tab button:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
 /* Create an active/current "tab button" class */
 div.tab button.active {
     background-color: #ccc;
@@ -65,7 +83,9 @@ div.tab button.active {
   <button id='taxes' type="button" class="tablinks" onclick="openCity(event, 'Taxes')">Risultati assunzione </button>
     {% endif %}
   <button id='work' type="button" class="tablinks" onclick="openCity(event, 'Work')">Il lavoro</button>
-  <button id='payoffs' type="button" class="tablinks" onclick="openCity(event, 'Payoffs')">I guadagni</button>
+  <button id='payoffs' type="button" class="tablinks" onclick="openCity(event, 'Payoffs')">I guadagni
+  <span class="tooltiptext">sezione non ancora disponibile</span></button>
+
 </div>
 <div id="Auction" class="tabcontent">
 

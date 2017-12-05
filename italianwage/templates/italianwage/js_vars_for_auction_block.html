@@ -84,10 +84,6 @@
                 movefunction(obj.last_message)
         }
 
-        if (obj.day_over) {
-            $('#form').submit();
-            return;
-        }
         if (obj.closed_contracts) {
             closed_contracts = jQuery.parseJSON(obj.closed_contracts);
             console.log('CLOSED::::' + obj.closed_contracts);
@@ -110,7 +106,10 @@
             );
 
         }
-
+        if (obj.day_over) {
+            $('#form').submit();
+            return;
+        }
         if (obj.active_contracts) {
             active_contracts = jQuery.parseJSON(obj.active_contracts);
             $('div#active_offers').empty();
@@ -125,7 +124,7 @@
                 }
             });
             if (any_values === 0) {
-                $("#test").val("");
+                // eliminate while testing... $("#test").val("");
             }
 
         }

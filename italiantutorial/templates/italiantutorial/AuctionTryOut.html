@@ -196,7 +196,9 @@ Il pulsante "Accetto" apparirà dopo aver cliccato su una delle offerte. </p>
             last = active_contracts['amount'];
         }
         else {
-            movefunction("Un'offerta prima di " + last + " è ora di " + active_contracts['amount'] + ".");
+            if (last !== active_contracts['amount']) {
+                movefunction("Un'offerta prima di " + last + " è ora di " + active_contracts['amount'] + ".");
+            }
             last = active_contracts['amount']
         }
         console.log('offer clicked');

@@ -44,7 +44,9 @@
         <p>
         Hai assunto un lavoratore, il quale ha ora 5 minuti per svolgere il lavoro. Per favore, attendi.
         </p>
+    {% endif %}
 
+    {% if player.role == "employer" %}
         <p> Nel mentre, puoi provarci anche tu.
             Lo svolgimento <b>verrà interrotto nel momento in cui i lavoratori saranno pronti</b>.
             Questa fase (e quanti compiti completerai correttamente)

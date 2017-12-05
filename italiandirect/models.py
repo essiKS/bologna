@@ -18,10 +18,10 @@ Adaptation of Fehr et al. 1993 auction.
 
 class Constants(BaseConstants):
     name_in_url = 'italiandirect'
-    players_per_group = 12
-    num_rounds = 9
+    players_per_group = 5
+    num_rounds = 8
     starting_time = 120
-    num_employers = 4
+    num_employers = 2
     num_workers = players_per_group - num_employers
     task_time = 300
     lower_boundary = 30
@@ -32,9 +32,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     # what is this?
-    wp_to_delete_completion=models.IntegerField()
-
-    helper = 0
+    wp_to_delete_completion = models.IntegerField()
 
     def creating_session(self):
         taxes = [1, 3, 1, 2, 2, 1, 1, 1]

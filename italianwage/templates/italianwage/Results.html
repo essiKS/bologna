@@ -19,7 +19,6 @@
         <p> <b>Hai assunto un lavoratore</b>, che ha completato correttamente
 	<b>{{ tasks_correct }} <span id="Scorr">compiti </span> </b>
          e <span id="oi">tentati</span> {{ tasks_attempted }}. </p>
-        <p> Ogni compito eseguito correttamente vale <b>20 punti</b> per il datore di lavoro. </p>
         <p> Per ogni compito eseguito correttamente ricevi <b>20 punti</b></p>
         <p> <b>Non c'erano sono tasse </b> per questo periodo.</p>
         <p> Il tuo guadagno è 40 - {{ final_wage }} + {{ tasks_correct }} * 20 = <b>{{ player.pay|json }} punti.</b></p>
@@ -28,7 +27,6 @@
           <p> <b>Hai assunto un lavoratore</b>, che ha completato correttamente
 	<b>{{ tasks_correct }} <span id="Scorr">compiti</span></b>
          e <span id="oi">tentati</span> {{ tasks_attempted }}. </p>
-        <p> Ogni compito eseguito correttamente vale <b>20 punti</b> per il datore di lavoro. </p>
         <p> Per ogni compito eseguito correttamente ricevi <b>20 punti</b>.</p>
         <p> Il tuo guadagno è 40 - {{ final_wage }} + {{ tasks_correct }} * 20 = <b>{{ player.pay |json }} punti.</b></p>
         <p> Il guadagno del tuo lavoratore è <b>{{ partner_payoff |json }} punti.</b></p>
@@ -54,7 +52,6 @@
         <p> <b>Sei stato assunto</b> e hai completato correttamente <b>{{ tasks_correct }} <span id="Scorr">compiti</span></b>
 	    e ne hai <span id="oi">tentati</span> {{ tasks_attempted }}. </p>
         <p> Ogni compito eseguito correttamente vale <b>20 punti</b> per il tuo datore di lavoro. </p>
-        <p> Per ogni compito esequito correttamente il tuo datore di lavoro ottiene <b>20 punti</b>.</p>
         <p> <b>Non c'erano sono tasse </b> per questo periodo.</p>
         <p> Il tuo guadagno è <b>{{ player.pay|json }} punti.</b></p>
         <p> Il guadagno del tuo datore di lavoro è 40 - {{ final_wage }} + {{ tasks_correct }} * 20 = <b>{{ partner_payoff|json }} punti.</b></p>
