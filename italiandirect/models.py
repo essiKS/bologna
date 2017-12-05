@@ -18,10 +18,10 @@ Adaptation of Fehr et al. 1993 auction.
 
 class Constants(BaseConstants):
     name_in_url = 'italiandirect'
-    players_per_group = 5
+    players_per_group = 12
     num_rounds = 8
     starting_time = 120
-    num_employers = 2
+    num_employers = 5
     num_workers = players_per_group - num_employers
     task_time = 300
     lower_boundary = 30
@@ -80,27 +80,30 @@ class Group(BaseGroup):
         return time_left
 
     def set_pay(self):
-        # need to be changed to contract mode
-        for person in self.get_players():
+        try:
+            for person in self.get_players():
 
-            if person.role() == 'employer':
-                if person.matched == 0:
-                    person.pay = 0
-                else:
-                    closed_contract = person.contract.get(accepted=True)
-                    if person.tax_outcome == 2:
-                        person.pay = 40 - closed_contract.amount + 0.8 * 20 * closed_contract.tasks_corr
+                if person.role() == 'employer':
+                    if person.matched == 0:
+                        person.pay = 0
                     else:
-                        person.pay = 40 - closed_contract.amount + 20 * closed_contract.tasks_corr
-            if person.role() == 'worker':
-                if person.matched == 0:
-                    person.pay = 20
-                else:
-                    closed_contract = person.work_to_do.get(accepted=True)
-                    if person.tax_outcome == 3:
-                        person.pay = 0.8 * closed_contract.amount
+                        closed_contract = person.contract.get(accepted=True)
+                        if person.tax_outcome == 2:
+                            person.pay = 40 - closed_contract.amount + 0.8 * 20 * closed_contract.tasks_corr
+                        else:
+                            person.pay = 40 - closed_contract.amount + 20 * closed_contract.tasks_corr
+                if person.role() == 'worker':
+                    if person.matched == 0:
+                        person.pay = 20
                     else:
-                        person.pay = closed_contract.amount
+                        closed_contract = person.work_to_do.get(accepted=True)
+                        if person.tax_outcome == 3:
+                            person.pay = 0.8 * closed_contract.amount
+                        else:
+                            person.pay = closed_contract.amount
+        except TypeError:
+            for person in self.get_players():
+                person.pay = 0
 
     def set_payoffs(self):
         for person in self.get_players():

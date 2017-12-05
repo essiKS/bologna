@@ -41,14 +41,15 @@
     {%  elif player.timeline == 'indirect' and player.treatment != 'no_taxes' %}
     </p>
     <h4> 2º fase: Tasse e salario finale </h4>
-    <p> I risultati generali della fase di assunzione sono resi noti, ed eventuali tasse vengono annunciate.
-        I datori di lavoro possono ora decidere quale salario finale offrire. </p>
+    <p>
+        I risultati generali della fase di assunzione sono resi noti, ed eventuali tasse vengono annunciate.
+        I datori di lavoro possono ora decidere quale salario finale dare.  </p>
     <h4> 3º fase: Lavoro </h4>
     {%  elif player.timeline == 'indirect' and player.treatment == 'no_taxes' %}
     <h4>2º fase: Risultati assunzione e salario finale</h4>
     <p>
     I risultati generali della fase di assunzione sono resi noti.
-    I datori di lavoro possono ora decidere quale salario finale offrire.
+    I datori di lavoro possono ora decidere quale salario finale dare.
     </p>
     <h4>3º fase: Lavoro </h4>
     {% endif %}
