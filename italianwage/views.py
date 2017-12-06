@@ -41,8 +41,11 @@ class WP(WaitPage):
     title_text = "Attendere prego"
     body_text = "Un nuovo round sta per cominciare, per favore attendi gli altri partecipanti."
 
+    wait_for_all_groups = True
+
     def after_all_players_arrive(self):
-        self.group.auctionenddate = time.time() + Constants.starting_time + 5
+        for bunch in self.subsession.get_groups():
+            bunch.auctionenddate = time.time() + Constants.starting_time + 5
 
 
 class CountDown(Page):

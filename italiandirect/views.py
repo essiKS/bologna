@@ -43,9 +43,12 @@ class Role(Page):
 class WP(WaitPage):
     title_text = "Attendere prego"
     body_text = "Un nuovo round sta per cominciare, per favore attendi gli altri partecipanti."
+
+    wait_for_all_groups = True
+
     def after_all_players_arrive(self):
-        now = time.time()
-        self.group.auctionenddate = now + Constants.starting_time + 10
+        for bunch in self.subsession.get_groups():
+            bunch.auctionenddate = time.time() + Constants.starting_time + 10
 
 
 class TaxOutcome(Page):
