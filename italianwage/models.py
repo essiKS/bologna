@@ -17,10 +17,10 @@ Adaptation of Fehr et al. 1993 auction.
 
 class Constants(BaseConstants):
     name_in_url = 'wageauction'
-    players_per_group = 5
+    players_per_group = 2
     num_rounds = 8
     starting_time = 120
-    num_employers = 2
+    num_employers = 1
     num_workers = players_per_group - num_employers
     task_time = 300
     lower_bound = 30
