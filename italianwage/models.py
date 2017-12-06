@@ -127,7 +127,7 @@ class Player(BasePlayer):
 
     def role(self):
         for each in self.session.vars['roles']:
-            if self.participant.id_in_session == each:
+            if self.id_in_group == each:
                 return 'employer'
         if self.role != 'employer':
             return 'worker'
