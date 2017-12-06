@@ -66,8 +66,8 @@
       <file leaf-file-name="consumers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/italiandirect/consumers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="169" column="47" lean-forward="true" selection-start-line="169" selection-start-column="47" selection-end-line="169" selection-end-column="47" />
+            <state relative-caret-position="416">
+              <caret line="173" column="52" lean-forward="false" selection-start-line="173" selection-start-column="52" selection-end-line="173" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -806,8 +806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/italiandirect/consumers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="169" column="47" lean-forward="true" selection-start-line="169" selection-start-column="47" selection-end-line="169" selection-end-column="47" />
+        <state relative-caret-position="416">
+          <caret line="173" column="52" lean-forward="false" selection-start-line="173" selection-start-column="52" selection-end-line="173" selection-end-column="52" />
           <folding />
         </state>
       </provider>

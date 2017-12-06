@@ -171,8 +171,8 @@ def dir_work_message(message, worker_code, player_pk):
     new_task['tasks_attempted'] = player.tasks_attempted
     new_task['feedback'] = feedback
 
-    if player.tasks_attempted < Constants.max_task_amount:
+    if int(new_task['tasks_attempted']) < Constants.max_task_amount:
         message.reply_channel.send({'text': json.dumps(new_task)})
-    if player.tasks_attempted >= Constants.max_task_amount:
+    if int(new_task['tasks_attempted']) >= Constants.max_task_amount:
         new_task['task_over'] = True
         message.reply_channel.send({'text': json.dumps(new_task)})
