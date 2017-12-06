@@ -158,19 +158,19 @@ def dir_work_message(message, worker_code, player_pk):
     jsonmessage = json.loads(message.content['text'])
     answer = jsonmessage.get('answer')
     player = Player.objects.get(participant__code__exact=worker_code, pk=player_pk)
+    new_task = get_task()
+    player.last_correct_answer = new_task['correct_answer']
     player.tasks_attempted += 1
     if int(answer) == int(player.last_correct_answer):
         player.tasks_correct += 1
         feedback = "La precedente risposta era corretta."
     else:
         feedback = "La precedente risposta " + str(answer) + " era sbagliata, la risposta corretta era " + str(player.last_correct_answer) + "."
-
-    new_task = get_task()
+    player.save()
     new_task['tasks_correct'] = player.tasks_correct
     new_task['tasks_attempted'] = player.tasks_attempted
     new_task['feedback'] = feedback
-    player.last_correct_answer = new_task['correct_answer']
-    player.save()
+
     if player.tasks_attempted < Constants.max_task_amount:
         message.reply_channel.send({'text': json.dumps(new_task)})
     if player.tasks_attempted >= Constants.max_task_amount:
