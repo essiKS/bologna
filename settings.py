@@ -131,13 +131,13 @@ SESSION_CONFIGS = [
 {
         'name': 'endsurvey',
         'display_name': 'endsurvey',
-        'num_demo_participants': 4,
+        'num_demo_participants': 3,
         'app_sequence': ['endsurvey', ],
     },
     {
         'name': 'italianwage',
         'display_name': 'italianwage',
-        'num_demo_participants': 4,
+        'num_demo_participants': 3,
         'app_sequence': ['italianwage', ],
         'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
@@ -145,7 +145,7 @@ SESSION_CONFIGS = [
     {
         'name': 'italiandirect',
         'display_name': 'italiandirect',
-        'num_demo_participants': 4,
+        'num_demo_participants': 3,
         'app_sequence': ['italiandirect', ],
         'treatment': 'employer_tax',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
@@ -153,7 +153,7 @@ SESSION_CONFIGS = [
     {
         'name': 'italiantutorial',
         'display_name': 'italiantutorial',
-        'num_demo_participants': 4,
+        'num_demo_participants': 3,
         'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
         'timeline': 'wage',

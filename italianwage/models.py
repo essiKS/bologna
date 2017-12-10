@@ -17,7 +17,7 @@ Adaptation of Fehr et al. 1993 auction.
 
 class Constants(BaseConstants):
     name_in_url = 'wageauction'
-    players_per_group = 2
+    players_per_group = 3
     num_rounds = 8
     starting_time = 120
     num_employers = 1
