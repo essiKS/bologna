@@ -93,11 +93,13 @@ class WPage(WaitPage):
     body_text = "La tua decisione è stata registrata... stiamo aspettando gli altri partecipanti."
 
     def after_all_players_arrive(self):
-        wages = []
-        for p in self.subsession.get_players():
-            if p.wage_offer:
-                wages.append(p.wage_offer)
-        self.group.wage_list = str(wages)[1:-1]
+
+        for g in self.subsession.get_groups():
+            wages = []
+            for p in g.get_players():
+                if p.wage_offer:
+                    wages.append(p.wage_offer)
+            self.group.wage_list = str(wages)[1:-1]
 
 
 class AfterAuctionDecision(EmployerPage):
@@ -161,6 +163,7 @@ class WorkPage(ActiveWorkerPage):
         closed_contract.tasks_corr = self.player.tasks_correct
         closed_contract.tasks_att = self.player.tasks_attempted
         closed_contract.save()
+        self.group.work_end_date = time.time() + Constants.task_time
 
 
 class WaitP(WaitPage):
@@ -168,7 +171,6 @@ class WaitP(WaitPage):
     template_name = 'italianwage/WaitP.html'
 
     def vars_for_template(self):
-        self.group.work_end_date = time.time() + Constants.task_time
         return {'time_left': self.group.time_work()}
 
     def after_all_players_arrive(self):
