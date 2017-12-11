@@ -21,6 +21,8 @@ class Constants(BaseConstants):
     upper_bound = 101
     step = 5
     offer_range = list(range(lower_bound, upper_bound, step))
+    task_time = 300
+    max_task_amount = 10
 
 COMMON_ROWS = (
     (1, "Se un lavoratore è disoccupato in un dato round, non guadagnerà niente."),

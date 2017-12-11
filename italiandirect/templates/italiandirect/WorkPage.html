@@ -140,11 +140,13 @@ e poi <b>sommarli</b>.
 
     <script>
         $("button.answer").on("click", function () {
-            var msg = {
-                'answer': $('input#answer').val()
-            };
-            if (socket.readyState === socket.OPEN) {
-                socket.send(JSON.stringify(msg));
+            if ($('input#answer').val()) {
+                var msg = {
+                    'answer': $('input#answer').val()
+                };
+                if (socket.readyState === socket.OPEN) {
+                    socket.send(JSON.stringify(msg));
+                }
             }
         });
 
