@@ -1,6 +1,6 @@
 from channels import Group
 from channels.sessions import channel_session
-from .models import Player, Subsession, ROWSS
+from .models import Player, Subsession, ROWSS, Constants
 import json
 from random import randint
 
@@ -59,9 +59,9 @@ def tut_work_message(message, worker_code, player_pk):
     new_task['feedback'] = feedback
     player.last_correct_answer = new_task['correct_answer']
     player.save()
-    if player.tasks_attempted < 10:
+    if int(new_task['tasks_attempted']) < Constants.max_task_amount:
         message.reply_channel.send({'text': json.dumps(new_task)})
-    if player.tasks_attempted >= 10:
+    if int(new_task['tasks_attempted']) >= Constants.max_task_amount:
         new_task['task_over'] = True
         message.reply_channel.send({'text': json.dumps(new_task)})
 
