@@ -33,7 +33,7 @@ def process_employer_request(jsonmessage, group):
     group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
     group.save()
     if not created:
-        group.last_message = str("Un'offerta prima di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
+        group.last_message = str("Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
         group.save()
         contract.amount = wage_offer
         contract.save()
@@ -162,13 +162,13 @@ def work_message(message, worker_code, player_pk):
         feedback = "La precedente risposta era corretta."
     else:
         feedback = "La precedente risposta " + str(answer) + " era sbagliata, la risposta corretta era " + str(player.last_correct_answer) + "."
-
     new_task = get_task()
+    player.last_correct_answer = new_task['correct_answer']
+    player.save()
     new_task['tasks_correct'] = player.tasks_correct
     new_task['tasks_attempted'] = player.tasks_attempted
     new_task['feedback'] = feedback
-    player.last_correct_answer = new_task['correct_answer']
-    player.save()
+
     if player.tasks_attempted < Constants.max_task_amount:
         message.reply_channel.send({'text': json.dumps(new_task)})
     if player.tasks_attempted >= Constants.max_task_amount:

@@ -18,10 +18,10 @@ Adaptation of Fehr et al. 1993 auction.
 
 class Constants(BaseConstants):
     name_in_url = 'italiandirect'
-    players_per_group = 3
+    players_per_group = 12
     num_rounds = 8
     starting_time = 120
-    num_employers = 1
+    num_employers = 5
     num_workers = players_per_group - num_employers
     task_time = 300
     lower_boundary = 30
@@ -68,6 +68,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     auctionenddate = models.FloatField()
+    work_end_date = models.FloatField()
     num_contracts_closed = models.IntegerField()
     day_over = models.BooleanField()
     last_message = models.CharField()
@@ -78,6 +79,13 @@ class Group(BaseGroup):
         time_left = self.auctionenddate - now
         time_left = round(time_left) if time_left > 0 else 0
         return time_left
+
+
+    def time_work(self):
+            now = time.time()
+            time_left = self.work_end_date - now
+            time_left = round(time_left) if time_left > 0 else 0
+            return time_left
 
     def set_pay(self):
         try:

@@ -1,7 +1,9 @@
 from channels.routing import route
 from italianwage.consumers import ws_message, ws_connect, ws_disconnect, work_connect, work_disconnect, work_message
-from italiandirect.consumers import  dir_ws_message, dir_ws_connect, dir_ws_disconnect, dir_work_connect, dir_work_disconnect, dir_work_message
-from italiantutorial.consumers import tut_work_connect, tut_work_disconnect, tut_work_message, big_connect, big_disconnect, big_message
+from italiandirect.consumers import dir_ws_message, dir_ws_connect, dir_ws_disconnect, dir_work_connect, \
+    dir_work_disconnect, dir_work_message
+from italiantutorial.consumers import tut_work_connect, tut_work_disconnect, tut_work_message, big_connect, \
+    big_disconnect, big_message
 from otree.channels.routing import channel_routing
 from channels.routing import include, route_class
 

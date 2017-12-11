@@ -50,7 +50,7 @@ class WP(WaitPage):
 
 class CountDown(Page):
     timeout_seconds = 5
-    timer_text = "La prossima fase inizierà tra 5 secondi"
+    timer_text = "La prossima fase inizierà tra 5 secondi:  "
 
 
 class Auction(EmployerPage):
@@ -164,8 +164,12 @@ class WorkPage(ActiveWorkerPage):
 
 
 class WaitP(WaitPage):
-    title_text = "Per favore attendi"
+    title_text = "Attendere prego"
     template_name = 'italianwage/WaitP.html'
+
+    def vars_for_template(self):
+        self.group.work_end_date = time.time() + Constants.task_time
+        return {'time_left': self.group.time_work()}
 
     def after_all_players_arrive(self):
         self.group.set_pay()
@@ -209,7 +213,7 @@ class FinalResults(Page):
                 "last_round": str(rounds)[7:-1],
                 'player_in_all_rounds': self.player.in_all_rounds(),
                 'total_payoff': self.player.total_payoff,
-                'in_euros': self.player.total_payoff / 10}
+                'in_euros': self.participant.payoff_plus_participation_fee()}
 
 
 page_sequence = [

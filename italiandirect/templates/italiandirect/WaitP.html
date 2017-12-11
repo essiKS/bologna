@@ -29,6 +29,15 @@
             }
         </style>
     </head>
+    {% if player.role == "worker" and player.matched == 1 %}
+    {% else %}
+        <div class="otree-timer alert alert-warning">
+        <div id="otree-timeout">Tempo rimanente nella fase di lavoro (approssimativamente):
+            <span class="glyphicon glyphicon-time"></span>
+        <span id="otree-timer__time-left"></span></div>
+        </div>
+
+    {% endif %}
 
     {% if player.matched == 0 and player.role == "employer" %}
         <p>
@@ -154,20 +163,40 @@
     {% include 'italiandirect/js_work_page.html' %}
 
     <script>
-        $("button.answer").on("click", function () {
-            var msg = {
-                'answer': $('input#answer').val()
-            };
-            if (socket.readyState === socket.OPEN) {
-                socket.send(JSON.stringify(msg));
-            }
-        });
+    var milliseconds = 1000 * {{time_left}};
 
-        $("input#answer").keyup(function (event) {
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                $("button.answer").click();
-            }
-        });
+    update_create_countdown(milliseconds);
+
+    function update_create_countdown(milliseconds) {
+        $('div#otree-timeout').show();
+        var currentDate = new Date();
+
+        $('span#otree-timer__time-left').countdown(currentDate.valueOf() + milliseconds)
+            .on('update.countdown', function (event) {
+                // %-N is "Total count of minutes till the end, non-padded"
+                // %S is seconds left
+                var format = '%-N:%S';
+                $(this).html(event.strftime(format));
+            })
+            .on('finish.countdown', function (event) {
+                // nothing)
+            });
+    }
+
+    $("button.answer").on("click", function () {
+        var msg = {
+            'answer': $('input#answer').val()
+        };
+        if (socket.readyState === socket.OPEN) {
+            socket.send(JSON.stringify(msg));
+        }
+    });
+
+    $("input#answer").keyup(function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            $("button.answer").click();
+        }
+    });
     </script>
 {% endblock %}
