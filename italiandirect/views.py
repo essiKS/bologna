@@ -114,13 +114,12 @@ class WPage(WaitPage):
     body_text = "La tua decisione è stata registrata... stiamo aspettando gli altri partecipanti."
 
     def after_all_players_arrive(self):
-
         for g in self.subsession.get_groups():
             wages = []
             for p in g.get_players():
-                if p.wage_offer:
-                    wages.append(p.wage_offer)
-            self.group.wage_list = str(wages)[1:-1]
+                if g.get_player_by_id(p.id_in_group).wage_offer:
+                    wages.append(g.get_player_by_id(p.id_in_group).wage_offer)
+            g.wage_list = str(wages)[1:-1]
 
 
 class AuctionResultsEmployer(EmployerPage):
