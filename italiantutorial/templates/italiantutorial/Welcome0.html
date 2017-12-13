@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Benvenuto all'esperimento!
+{% endblock %}
+
+{% block styles %}
+ <style>
+     h4 {
+         margin-left: 10px;
+     }
+ </style>
+{% endblock %}
+
+{% block content %}
+
+<p> <b> D'ora in poi, non potrai parlare con gli altri partecipanti. Per qualunque
+    domanda, alza la mano. Per favore, metti il telefono nella borsa: non ti è
+    permesso di utilizzarlo durante l'esperimento. Nel caso volessi rivedere
+    le istruzioni anche dopo aver terminato il tutorial, potrai usare la versione
+    cartacea sul tuo banco, dove potrai anche trovare una penna e dei fogli di
+    carta. </b> </p>
+
+<p> Il tuo guadagno totale dall'esperimento sarà composto da due parti: 5
+    euro di quota di partecipazione più i guadagni (o le perdite) ottenuti in 3
+    degli 8 round totali. Questi 3 round verranno estratti casualmente. </p>
+
+<h4>Ruolo</h4>
+
+<p>
+    Fai parte di un mercato del lavoro in cui ci sono 5 datori di lavoro e 7 lavoratori.
+    Dopo aver letto le istruzioni ed aver risposto ad un questionario,
+    ti verrà casualmente assegnato il ruolo di datore di lavoro o di lavoratore
+    e <b>manterrai lo stesso ruolo per l’intera durata dell’esperimento</b>.</p>
+
+
+{% endblock %}

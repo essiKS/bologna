@@ -66,6 +66,7 @@ class TaxOutcome(Page):
 class CountDown(Page):
     timeout_seconds = 5
     timer_text = "La prossima fase inizierà tra 5 secondi:  "
+
     def is_displayed(self):
         if self.player.treatment == "no_taxes":
             return True
@@ -85,6 +86,7 @@ class Auction(EmployerPage):
                 }
 
     def before_next_page(self):
+        time.sleep(0.1)
         closed_contract = self.player.contract.filter(accepted=True)
         if closed_contract:
             self.player.matched = closed_contract
@@ -105,6 +107,7 @@ class Accept(WorkerPage):
                 'active_contracts': active_contracts}
 
     def before_next_page(self):
+        time.sleep(0.1)
         closed_contract = self.player.work_to_do.filter(accepted=True).exists()
         self.player.matched = closed_contract
 
@@ -114,6 +117,7 @@ class WPage(WaitPage):
     body_text = "La tua decisione è stata registrata... stiamo aspettando gli altri partecipanti."
 
     def after_all_players_arrive(self):
+        time.sleep(0.1)
         for g in self.subsession.get_groups():
             wages = []
             for p in g.get_players():
@@ -199,6 +203,7 @@ class Results(Page):
                     'final_wage': final_wage }
         else:
             return {}
+
 
 class FinalResults(Page):
     def is_displayed(self):

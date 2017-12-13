@@ -38,6 +38,7 @@ def process_employer_request(jsonmessage, group):
         group.save()
         contract.amount = wage_offer
         contract.save()
+    time.sleep(0.01)
 
 
 def process_worker_request(jsonmessage, respondent, group):
@@ -47,6 +48,7 @@ def process_worker_request(jsonmessage, respondent, group):
     response = {}
     if contract.accepted:
         # check if there are alternative contracts with the identical wage offer
+        alternative_contracts = list()
         alternative_contracts = list(
             JobContract.objects.filter(accepted=False, employer__group=group, amount=wage_accepted).values('pk', 'amount'))
         if len(alternative_contracts) == 0:
@@ -73,7 +75,7 @@ def process_worker_request(jsonmessage, respondent, group):
         group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
         group.save()
         response['already_taken'] = False
-
+    time.sleep(0.01)
     response.update(get_contracts(group))
     respondent.send({'text': json.dumps(response)})
 
@@ -96,6 +98,7 @@ def dir_ws_message(message, group_name):
     closed_contracts_num = JobContract.objects.filter(accepted=True, employer__group=group).count()
     group.num_contracts_closed = closed_contracts_num
     group.save()
+    time.sleep(0.01)
     if closed_contracts_num >= Constants.num_employers:
         group.day_over = True
         group.save()
@@ -167,6 +170,7 @@ def dir_work_message(message, worker_code, player_pk):
     new_task = get_task()
     player.last_correct_answer = new_task['correct_answer']
     player.save()
+    time.sleep(0.01)
     new_task['tasks_correct'] = player.tasks_correct
     new_task['tasks_attempted'] = player.tasks_attempted
     new_task['feedback'] = feedback

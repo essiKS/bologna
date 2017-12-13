@@ -14,6 +14,10 @@ class Error(Page):
             return True
 
 
+class Welcome0(Page):
+    pass
+
+
 class Welcome(Page):
     pass
 
@@ -60,6 +64,7 @@ class Results(Page):
 
 page_sequence = [
     Error,
+    Welcome0,
     Welcome,
     OverallStructure,
     AllInstructions,

@@ -64,6 +64,7 @@ class Auction(EmployerPage):
                 'active_contracts': active_contracts,}
 
     def before_next_page(self):
+        time.sleep(0.01)
         closed_contract = self.player.contract.filter(accepted=True)
         if closed_contract:
             self.player.matched = closed_contract
@@ -84,6 +85,7 @@ class Accept(WorkerPage):
                 'active_contracts': active_contracts}
 
     def before_next_page(self):
+        time.sleep(0.1)
         closed_contract = self.player.work_to_do.filter(accepted=True).exists()
         self.player.matched = closed_contract
 
@@ -94,12 +96,12 @@ class WPage(WaitPage):
 
     def after_all_players_arrive(self):
         for g in self.subsession.get_groups():
+            time.sleep(0.1)
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
                     wages.append(g.get_player_by_id(p.id_in_group).wage_offer)
             g.wage_list = str(wages)[1:-1]
-
 
 
 class AfterAuctionDecision(EmployerPage):
@@ -111,6 +113,7 @@ class AfterAuctionDecision(EmployerPage):
     form_fields = ["wage_adjustment"]
 
     def before_next_page(self):
+        time.sleep(0.1)
         closed_contract = self.player.contract.get(accepted=True)
         closed_contract.amount_updated = self.player.wage_offer + self.player.wage_adjustment
         closed_contract.save()
@@ -163,7 +166,7 @@ class WorkPage(ActiveWorkerPage):
         closed_contract.tasks_corr = self.player.tasks_correct
         closed_contract.tasks_att = self.player.tasks_attempted
         closed_contract.save()
-        self.group.work_end_date = time.time() + Constants.task_time
+
 
 
 class WaitP(WaitPage):
@@ -171,6 +174,7 @@ class WaitP(WaitPage):
     template_name = 'italianwage/WaitP.html'
 
     def vars_for_template(self):
+        self.group.work_end_date = time.time() + Constants.task_time
         return {'time_left': self.group.time_work()}
 
     def after_all_players_arrive(self):

@@ -3,6 +3,7 @@ from channels.sessions import channel_session
 from .models import Player, Subsession, ROWSS, Constants
 import json
 from random import randint
+import time
 
 
 def slicelist(l,n):
@@ -59,6 +60,7 @@ def tut_work_message(message, worker_code, player_pk):
     new_task['feedback'] = feedback
     player.last_correct_answer = new_task['correct_answer']
     player.save()
+    time.sleep(0.01)
     if int(new_task['tasks_attempted']) < Constants.max_task_amount:
         message.reply_channel.send({'text': json.dumps(new_task)})
     if int(new_task['tasks_attempted']) >= Constants.max_task_amount:
