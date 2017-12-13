@@ -35,7 +35,7 @@ class Player(BasePlayer):
         [2, "Donna"],
     ]
     , widget=widgets.RadioSelectHorizontal)
-    year_of_study = models.PositiveIntegerField(verbose_name="Anno di Studio (0 se non sei uno studente)", min=0, max=15)
+    year_of_study = models.PositiveIntegerField(verbose_name="Anno di Studio (0 se non sei uno studente, 1 se sei al primo anno di università etc)", min=0, max=15)
     area_of_study = models.CharField(verbose_name="Campo di studio (nessuno se non sei uno studente)")
     nationality = models.CharField(verbose_name="Nazionalità")
     tell_earnings = models.PositiveIntegerField(verbose_name="Hai intenzione di dire ad altre persone "
