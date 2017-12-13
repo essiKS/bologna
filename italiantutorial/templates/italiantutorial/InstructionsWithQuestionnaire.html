@@ -75,6 +75,10 @@ div.tab button.active {
 
 <div id="Taxes" class="tabcontent">
     {% include 'italiantutorial/instructions_taxes.html' %}
+    {% if player.timeline == 'indirect' %}
+        <p> <b style="color: #24435c">Figura 1:</b> <i> Un esempio della schermata del programma </i></p>
+    <img width="100%" src="{% static "italiantutorial/Final_wage.png" %}">
+    {% endif %}
 </div>
 
 <div id="Work" class="tabcontent">

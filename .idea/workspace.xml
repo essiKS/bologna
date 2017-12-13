@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de4fd806-7f92-452b-9229-5b1c95411ac9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.py" afterPath="$PROJECT_DIR$/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" afterPath="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,41 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/italiandirect/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="174" column="3" lean-forward="false" selection-start-line="174" selection-start-column="3" selection-end-line="176" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="open_contracts_block.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/italiandirect/templates/italiandirect/open_contracts_block.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="js_work_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/italiandirect/templates/italiandirect/js_work_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="5" column="80" lean-forward="false" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="js_vars_for_auction_block.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/italiandirect/templates/italiandirect/js_vars_for_auction_block.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -83,11 +54,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="443">
               <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instructions_taxes.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllInstructions2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="107" column="4" lean-forward="false" selection-start-line="107" selection-start-column="4" selection-end-line="110" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstructionsWithQuestionnaire.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -157,7 +158,6 @@
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/Auction.html" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/Results.html" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/js_vars_for_auction_block.html" />
-        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_auction.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/OverallStructure.html" />
         <option value="$PROJECT_DIR$/_templates/global/Page.html" />
@@ -168,7 +168,6 @@
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions.html" />
         <option value="$PROJECT_DIR$/italiandirect/templates/italiandirect/Accept.html" />
         <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AuctionTryOut.html" />
-        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" />
         <option value="$PROJECT_DIR$/italiandirect/templates/italiandirect/WaitP.html" />
         <option value="$PROJECT_DIR$/italianwage/templates/italianwage/WaitP.html" />
         <option value="$PROJECT_DIR$/italian_routing.py" />
@@ -189,6 +188,8 @@
         <option value="$PROJECT_DIR$/italianwage/views.py" />
         <option value="$PROJECT_DIR$/italiantutorial/models.py" />
         <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html" />
+        <option value="$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html" />
       </list>
     </option>
   </component>
@@ -264,6 +265,19 @@
             <path>
               <item name="bologna" type="b2602c69:ProjectViewProjectNode" />
               <item name="bologna" type="462c0819:PsiDirectoryNode" />
+              <item name="italiantutorial" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bologna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bologna" type="462c0819:PsiDirectoryNode" />
+              <item name="italiantutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bologna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bologna" type="462c0819:PsiDirectoryNode" />
+              <item name="italiantutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="italiantutorial" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -431,14 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/italianwage/templates/italianwage/AfterAuctionDecision.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -525,22 +531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="46" lean-forward="false" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="73" />
           <folding />
         </state>
       </provider>
@@ -833,6 +823,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
           <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/instructions_taxes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/AllInstructions2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="107" column="4" lean-forward="false" selection-start-line="107" selection-start-column="4" selection-end-line="110" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/italiantutorial/templates/italiantutorial/InstructionsWithQuestionnaire.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding />
         </state>
       </provider>
