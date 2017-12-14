@@ -33,13 +33,11 @@ def process_employer_request(jsonmessage, group):
     group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
     group.save()
     if not created:
-        if contract.accepted:
-            contract.save()
-        else:
-            group.last_message = str("Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
-            group.save()
-            contract.amount = wage_offer
-            contract.save()
+        group.last_message = str(
+            "Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
+        group.save()
+        contract.amount = wage_offer
+        contract.save()
     time.sleep(0.01)
 
 
@@ -55,6 +53,8 @@ def process_worker_request(jsonmessage, respondent, group):
         if len(alternative_contracts) == 0:
             response['already_taken'] = True
             response['last_message'] = False
+            group.last_message = False
+            group.save()
         else:
             contract_key = alternative_contracts[0]['pk']
             contract = JobContract.objects.get(pk=contract_key)
@@ -64,18 +64,16 @@ def process_worker_request(jsonmessage, respondent, group):
             response['already_taken'] = False
             group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
             group.save()
+    elif int(wage_accepted) != int(contract.amount):
+        response['already_taken'] = True
+        response['last_message'] = False
     else:
-        if int(wage_accepted) != int(contract.amount):
-            response['already_taken'] = True
-            # in the sense of altered
-            response['last_message'] = False
-        else:
-            contract.worker = worker
-            contract.accepted = True
-            contract.save()
-            group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
-            group.save()
-            response['already_taken'] = False
+        contract.worker = worker
+        contract.accepted = True
+        contract.save()
+        group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
+        group.save()
+        response['already_taken'] = False
     time.sleep(0.01)
     response.update(get_contracts(group))
     respondent.send({'text': json.dumps(response)})
@@ -99,7 +97,6 @@ def dir_ws_message(message, group_name):
     closed_contracts_num = JobContract.objects.filter(accepted=True, employer__group=group).count()
     group.num_contracts_closed = closed_contracts_num
     group.save()
-    time.sleep(0.01)
     if closed_contracts_num >= Constants.num_employers:
         group.day_over = True
         group.save()
@@ -171,7 +168,6 @@ def dir_work_message(message, worker_code, player_pk):
     new_task = get_task()
     player.last_correct_answer = new_task['correct_answer']
     player.save()
-    time.sleep(0.01)
     new_task['tasks_correct'] = player.tasks_correct
     new_task['tasks_attempted'] = player.tasks_attempted
     new_task['feedback'] = feedback

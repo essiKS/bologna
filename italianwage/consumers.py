@@ -49,6 +49,7 @@ def process_worker_request(jsonmessage, respondent, group):
     contract = JobContract.objects.get(pk=jsonmessage['contract_to_accept'])
     wage_accepted = jsonmessage['wage_accepted']
     response = {}
+    print("wage_accepted and contract.amount", wage_accepted, contract.amount)
     if contract.accepted:
         # check if there are alternative contracts with the identical wage offer
         alternative_contracts = list(
@@ -56,6 +57,8 @@ def process_worker_request(jsonmessage, respondent, group):
         if len(alternative_contracts) == 0:
             response['already_taken'] = True
             response['last_message'] = False
+            group.last_message = False
+            group.save()
         else:
             contract_key = alternative_contracts[0]['pk']
             contract = JobContract.objects.get(pk=contract_key)
@@ -65,18 +68,17 @@ def process_worker_request(jsonmessage, respondent, group):
             response['already_taken'] = False
             group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
             group.save()
+    elif int(wage_accepted) != int(contract.amount):
+        response['already_taken'] = True
+        response['last_message'] = False
     else:
-        if int(wage_accepted) != int(contract.amount):
-            response['already_taken'] = True
-            # in the sense of altered
-            response['last_message'] = False
-        else:
-            contract.worker = worker
-            contract.accepted = True
-            contract.save()
-            group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
-            group.save()
-            response['already_taken'] = False
+        contract.worker = worker
+        contract.accepted = True
+        contract.save()
+        group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
+        group.save()
+        response['already_taken'] = False
+
     time.sleep(0.01)
     response.update(get_contracts(group))
     respondent.send({'text': json.dumps(response)})

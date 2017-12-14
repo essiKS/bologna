@@ -67,7 +67,7 @@ class Auction(EmployerPage):
         time.sleep(0.5)
         closed_contract = self.player.contract.filter(accepted=True)
         if closed_contract:
-            self.player.matched = closed_contract
+            self.player.matched = 1
             self.player.wage_offer = closed_contract.first().amount
         else:
             self.player.matched = 0
@@ -87,8 +87,11 @@ class Accept(WorkerPage):
     def before_next_page(self):
         if self.player.role == 'worker':
             time.sleep(0.5)
-            closed_contract = self.player.work_to_do.filter(accepted=True).exists()
-            self.player.matched = closed_contract
+            closed_contract = self.player.work_to_do.filter(accepted=True)
+            if closed_contract:
+                self.player.matched = 1
+            else:
+                self.player.matched = 0
 
 
 class WPage(WaitPage):
