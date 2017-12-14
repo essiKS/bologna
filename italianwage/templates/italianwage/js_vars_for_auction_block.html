@@ -106,10 +106,12 @@
             );
 
         }
+
         if (obj.day_over) {
             $('#form').submit();
             return;
         }
+
         if (obj.active_contracts) {
             active_contracts = jQuery.parseJSON(obj.active_contracts);
             $('div#active_offers').empty();
@@ -124,7 +126,7 @@
                 }
             });
             if (any_values === 0) {
-                // eliminate while testing... $("#test").val("");
+                $("#test").val("");
             }
 
         }

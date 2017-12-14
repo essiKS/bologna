@@ -190,7 +190,7 @@ class Results(Page):
                 final_wage = closed_contract.amount
                 partner_payoff = worker_pk.pay
                 self.player.job_contract_dump = self.player.contract.values()
-            if self.player.role() == "worker":
+            else:
                 closed_contract = self.player.work_to_do.get(accepted=True)
                 employer_pk = closed_contract.employer
                 final_wage = closed_contract.amount

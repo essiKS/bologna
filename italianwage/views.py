@@ -64,7 +64,7 @@ class Auction(EmployerPage):
                 'active_contracts': active_contracts,}
 
     def before_next_page(self):
-        time.sleep(0.01)
+        time.sleep(0.5)
         closed_contract = self.player.contract.filter(accepted=True)
         if closed_contract:
             self.player.matched = closed_contract
@@ -85,9 +85,10 @@ class Accept(WorkerPage):
                 'active_contracts': active_contracts}
 
     def before_next_page(self):
-        time.sleep(0.1)
-        closed_contract = self.player.work_to_do.filter(accepted=True).exists()
-        self.player.matched = closed_contract
+        if self.player.role == 'worker':
+            time.sleep(0.5)
+            closed_contract = self.player.work_to_do.filter(accepted=True).exists()
+            self.player.matched = closed_contract
 
 
 class WPage(WaitPage):
