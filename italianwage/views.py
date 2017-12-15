@@ -86,8 +86,11 @@ class Accept(WorkerPage):
 
     def before_next_page(self):
         time.sleep(0.1)
-        closed_contract = self.player.work_to_do.filter(accepted=True).exists()
-        self.player.matched = closed_contract
+        closed_contract = self.player.work_to_do.filter(accepted=True)
+        if closed_contract:
+            self.player.matched = 1
+        else:
+            self.player.matched = 0
 
 
 class WPage(WaitPage):
