@@ -109,9 +109,9 @@ class Group(BaseGroup):
                         try:
                             closed_contract = person.work_to_do.get(accepted=True)
                             if person.tax_outcome == 3:
-                                person.pay = 0.8 * closed_contract.amount_updated
+                                person.pay = 0.8 * closed_contract.amount
                             else:
-                                person.pay = closed_contract.amount_updated
+                                person.pay = closed_contract.amount
                         except ObjectDoesNotExist:
                             person.pay = 0
         except TypeError:
