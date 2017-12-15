@@ -95,11 +95,23 @@ class Auction(EmployerPage):
             self.player.matched = 0
         self.player.offers_dump = self.player.offers.values()
 
+        if self.timeout_happened:
+            time.sleep(0.1)
+            closed_contract = self.player.contract.filter(accepted=True)
+            if closed_contract:
+                self.player.matched = closed_contract
+                self.player.wage_offer = closed_contract.first().amount
+            else:
+                self.player.matched = 0
+            self.player.offers_dump = self.player.offers.values()
+
 
 class Accept(WorkerPage):
     def extra_is_displayed(self):
         closed_contract = self.player.work_to_do.filter(accepted=True).exists()
         return not any([self.group.day_over, closed_contract])
+
+    # CAN IT BE THAT WORKER IS KICKED OUT OF THE PAGE, BECAUSE DAY IS OVER, BEFORE DATA HAS BEEN WRITTEN?
 
     def vars_for_template(self):
         active_contracts = JobContract.objects.filter(accepted=False, employer__group=self.group).values('pk', 'amount')
@@ -113,6 +125,15 @@ class Accept(WorkerPage):
             self.player.matched = 1
         else:
             self.player.matched = 0
+
+        if self.timeout_happened:
+            time.sleep(0.1)
+            closed_contract = self.player.work_to_do.filter(accepted=True)
+            if closed_contract:
+                self.player.matched = 1
+            else:
+                self.player.matched = 0
+
 
 
 class WPage(WaitPage):

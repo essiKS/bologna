@@ -73,6 +73,16 @@ class Auction(EmployerPage):
             self.player.matched = 0
         self.player.offers_dump = self.player.offers.values()
 
+        if self.timeout_happened:
+            time.sleep(0.5)
+            closed_contract = self.player.contract.filter(accepted=True)
+            if closed_contract:
+                self.player.matched = 1
+                self.player.wage_offer = closed_contract.first().amount
+            else:
+                self.player.matched = 0
+            self.player.offers_dump = self.player.offers.values()
+
 
 class Accept(WorkerPage):
     def extra_is_displayed(self):
@@ -91,6 +101,15 @@ class Accept(WorkerPage):
             self.player.matched = 1
         else:
             self.player.matched = 0
+
+        if self.timeout_happened:
+            time.sleep(0.1)
+            closed_contract = self.player.work_to_do.filter(accepted=True)
+            if closed_contract:
+                self.player.matched = 1
+            else:
+                self.player.matched = 0
+
 
 
 class WPage(WaitPage):
