@@ -43,12 +43,12 @@ class Subsession(BaseSubsession):
                     p.treatment = "no_taxes"
             if self.session.config['treatment'] == "worker_tax":
                 if tax_outcome == 2:
-                    tax_outcome = 1
+                    tax_outcome = 3
                     for p in self.get_players():
                         p.treatment = "worker_tax"
             if self.session.config['treatment'] == "employer_tax":
                 if tax_outcome == 3:
-                    tax_outcome = 1
+                    tax_outcome = 2
                     for p in self.get_players():
                         p.treatment = "employer_tax"
         for p in self.get_players():
