@@ -6,6 +6,7 @@ import random
 from django import forms
 import time
 import datetime
+from django.core.exceptions import ObjectDoesNotExist
 
 from django.db import models as djmodels
 
@@ -102,15 +103,21 @@ class Group(BaseGroup):
                     if person.matched == 0:
                         person.pay = 20
                     else:
-                        closed_contract = person.work_to_do.get(accepted=True)
-                        if person.tax_outcome == 3:
-                            person.pay = 0.8 * closed_contract.amount_updated
-                        else:
-                            person.pay = closed_contract.amount_updated
+                        try:
+                            closed_contract = person.work_to_do.get(accepted=True)
+                            if person.tax_outcome == 3:
+                                person.pay = 0.8 * closed_contract.amount_updated
+                            else:
+                                person.pay = closed_contract.amount_updated
+                        except ObjectDoesNotExist:
+                            person.pay = 0
+
         # I don't know if this bit of code is necessary
         except TypeError:
             for person in self.get_players():
                 person.pay = 0
+
+
 
     def set_payoffs(self):
         for person in self.get_players():
