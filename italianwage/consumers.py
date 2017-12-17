@@ -61,7 +61,6 @@ def process_worker_request(jsonmessage, respondent, group):
     else:
         contract = JobContract.objects.get(pk=jsonmessage['contract_to_accept'])
         wage_accepted = jsonmessage['wage_accepted']
-        print("wage_accepted and contract.amount", wage_accepted, contract.amount)
         if contract.accepted:
             # check if there are alternative contracts with the identical wage offer
             time.sleep(0.01)
@@ -88,7 +87,7 @@ def process_worker_request(jsonmessage, respondent, group):
                     response['already_taken'] = False
                     group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
                     group.save()
-        elif int(wage_accepted) != int(contract.amount):
+        elif wage_accepted != contract.amount:
             response['already_taken'] = True
             response['last_message'] = False
         else:

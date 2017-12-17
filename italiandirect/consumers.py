@@ -84,7 +84,7 @@ def process_worker_request(jsonmessage, respondent, group):
                     response['already_taken'] = False
                     group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
                     group.save()
-        elif int(wage_accepted) != int(contract.amount):
+        elif wage_accepted != contract.amount:
             response['already_taken'] = True
             response['last_message'] = False
         else:
