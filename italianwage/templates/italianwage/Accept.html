@@ -70,7 +70,10 @@ Accetta un'offerta cliccando su una delle offerte disponibili qui sopra e poi su
     });
 
     $("#subbutton").on('click', function () {
-            accept_contract( player_key );
+        if ($("#test").val() > 0) {
+            accept_contract(player_key);
+        }
+
     });
 
     accept_contract = function (contract) {
