@@ -56,7 +56,7 @@ class Subsession(BaseSubsession):
         for g in self.get_groups():
             g.num_contracts_closed = 0
         if self.round_number == 1:
-            paying_rounds = random.sample(range(1, Constants.num_rounds), 3)
+            paying_rounds = random.sample(range(1, Constants.num_rounds), 2)
             self.session.vars['paying_rounds'] = paying_rounds
             random_list = random.sample(range(1, Constants.players_per_group), Constants.num_employers)
             self.session.vars['roles'] = random_list
