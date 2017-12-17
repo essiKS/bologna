@@ -111,7 +111,7 @@ def big_message(message, participant_code):
                             "lavoratore e datore di lavoro")
         if answer_vector[8] == '1':
             feedback.append("<br> L'ammontare del tuo premio verrà determinato solo alla fine dell'esperimento: "
-                            "verranno scelti 3 round su 8 (casualmente) e sarai ricompensato per questi solamente")
+                            "verranno scelti 2 round su 8 (casualmente) e sarai ricompensato per questi solamente")
         # next rounds depend on the treatment.
         player = Player.objects.get(participant__code__exact=participant_code)
         if answer_vector[9] == '2':

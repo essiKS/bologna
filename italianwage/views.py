@@ -238,7 +238,7 @@ class FinalResults(Page):
         rounds.sort()
 
         return {"paying_rounds": str(rounds)[1:-4],
-                "last_round": str(rounds)[7:-1],
+                "last_round": str(rounds)[-3:-1],
                 'player_in_all_rounds': self.player.in_all_rounds(),
                 'total_payoff': self.player.total_payoff,
                 'in_euros': self.participant.payoff_plus_participation_fee()}
