@@ -46,7 +46,7 @@
         <p> Ogni compito eseguito correttamente vale <b>20 punti</b> per il datore di lavoro. </p>
         <p> C'è una <b> tassa del 20 % sul reddito del lavoratore</b>.</p>
         <p> Il tuo guadagno è 40 - {{ final_wage }} + {{ tasks_correct }} * 20 = <b>{{ player.pay|json }} punti.</b></p>
-        <p> Il guadagno del tuo lavoratore {{ final_wage }} - 0.2 * {{ final_wage }} = <b>{{ partner_payoff|json}} punti.</b></p>
+        <p> Il guadagno del tuo lavoratore è {{ final_wage }} - 20 % * {{ final_wage }} = <b>{{ partner_payoff|json}} punti.</b></p>
 
     {% elif player.matched == 1 and player.role == "worker" and player.tax_outcome == 1 and player.treatment != "no_taxes" %}
         <p> <b>Sei stato assunto</b> e hai completato correttamente <b>{{ tasks_correct }} <span id="Scorr">compiti</span></b>
@@ -76,7 +76,7 @@
 	    e ne hai <span id="oi">tentati</span> {{ tasks_attempted }}. </p>
         <p> Ogni compito eseguito correttamente vale <b>20 punti</b> per il tuo datore di lavoro </p>
         <p> C'è una <b> tassa del 20 % sul reddito del lavoratore</b>.</p>
-        <p> Il tuo guadagno è {{ final_wage }} - 0.2 * {{ final_wage }} = <b>{{ player.pay|json }} punti.</b></p>
+        <p> Il tuo guadagno è {{ final_wage }} - 20 % * {{ final_wage }} = <b>{{ player.pay|json }} punti.</b></p>
         <p> Il guadagno del tuo datore di lavoro è 40 - {{ final_wage }} + {{ tasks_correct }} * 20 = <b>{{ partner_payoff|json }} punti.</b></p>
     {% endif %}
 

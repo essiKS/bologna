@@ -138,23 +138,23 @@ SESSION_CONFIGS = [
         'name': 'italianwage',
         'display_name': 'italianwage',
         'num_demo_participants': 12,
-        'app_sequence': ['italianwage', ],
-        'treatment': 'worker_tax',
+        'app_sequence': ['italianwage', 'endsurvey'],
+        'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
     },
     {
         'name': 'italiandirect',
         'display_name': 'italiandirect',
         'num_demo_participants': 12,
-        'app_sequence': ['italiandirect', ],
-        'treatment': 'worker_tax',
+        'app_sequence': ['italiandirect', 'endsurvey'],
+        'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
     },
     {
         'name': 'italiantutorial',
         'display_name': 'italiantutorial',
         'num_demo_participants': 12,
-        'treatment': 'worker_tax',
+        'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
         'timeline': 'wage',
         # allowed timelines are 'direct' and 'wage' for the to applications to sequence, directauction and wageauction
