@@ -64,7 +64,7 @@ class Auction(EmployerPage):
                 'active_contracts': active_contracts,}
 
     def before_next_page(self):
-        time.sleep(0.5)
+        time.sleep(0.1)
         closed_contract = self.player.contract.filter(accepted=True)
         if closed_contract:
             self.player.matched = 1
@@ -74,7 +74,7 @@ class Auction(EmployerPage):
         self.player.offers_dump = self.player.offers.values()
 
         if self.timeout_happened:
-            time.sleep(0.5)
+            time.sleep(0.1)
             closed_contract = self.player.contract.filter(accepted=True)
             if closed_contract:
                 self.player.matched = 1
@@ -117,8 +117,8 @@ class WPage(WaitPage):
     body_text = "La tua decisione è stata registrata... stiamo aspettando gli altri partecipanti."
 
     def after_all_players_arrive(self):
+        time.sleep(0.1)
         for g in self.subsession.get_groups():
-            time.sleep(0.1)
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
@@ -138,8 +138,8 @@ class AfterAuctionDecision(EmployerPage):
         time.sleep(0.1)
         closed_contract = self.player.contract.get(accepted=True)
         closed_contract.amount_updated = self.player.wage_offer + self.player.wage_adjustment
-        closed_contract.save()
         closed_contract.worker.job_to_do_updated = True
+        closed_contract.save()
 
 
 class AuctionResultsWait(WaitPage):

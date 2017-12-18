@@ -36,6 +36,10 @@ def process_employer_request(jsonmessage, group):
     if created:
         group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
         group.save()
+
+        #Now... what happens if the employer tries to modify the wage after it has been accepted?
+        #At the moment... it just gives false information on the screen...
+
     if not created:
         group.last_message = str(
             "Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
@@ -92,7 +96,7 @@ def process_worker_request(jsonmessage, respondent, group):
             response['already_taken'] = True
             response['last_message'] = False
         else:
-            print("wage accepted and contract amount", wage_accepted, contract.amount)
+            print("wage accepted and contract amount", wage_accepted, contract.accepted)
             contract.worker = worker
             contract.accepted = True
             contract.save()

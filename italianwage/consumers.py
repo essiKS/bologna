@@ -12,7 +12,6 @@ def ws_connect(message, group_name):
 
 
 def get_contracts(group):
-    time.sleep(0.01)
     contracts = {}
     active_contracts = list(
         JobContract.objects.filter(accepted=False, employer__group=group).values('pk', 'amount'))
@@ -38,13 +37,11 @@ def process_employer_request(jsonmessage, group):
         group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
         group.save()
     if not created:
-        if contract.accepted:
-            contract.save()
-        else:
-            group.last_message = str("Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
-            group.save()
-            contract.amount = wage_offer
-            contract.save()
+        group.last_message = str(
+            "Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
+        group.save()
+        contract.amount = wage_offer
+        contract.save()
     time.sleep(0.01)
 
 
@@ -122,7 +119,6 @@ def ws_message(message, group_name):
     closed_contracts_num = JobContract.objects.filter(accepted=True, employer__group=group).count()
     group.num_contracts_closed = closed_contracts_num
     group.save()
-    time.sleep(0.01)
     if closed_contracts_num >= Constants.num_employers:
         group.day_over = True
         group.save()

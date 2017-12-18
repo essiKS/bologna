@@ -99,7 +99,7 @@ class Auction(EmployerPage):
             time.sleep(0.1)
             closed_contract = self.player.contract.filter(accepted=True)
             if closed_contract:
-                self.player.matched = closed_contract
+                self.player.matched = 1
                 self.player.wage_offer = closed_contract.first().amount
             else:
                 self.player.matched = 0
