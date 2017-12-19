@@ -134,7 +134,7 @@ class Accept(WorkerPage):
             else:
                 self.player.matched = 0
 
-
+# SOMEHOW THIS CODE FAILS HERE: NOT ALL GOES RIGHT... MAYBE PROBLEM WITH CONSUMERS...
 
 class WPage(WaitPage):
     title_text = "Attendere prego"

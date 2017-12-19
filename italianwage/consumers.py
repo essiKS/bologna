@@ -48,8 +48,8 @@ def process_employer_request(jsonmessage, group):
 def process_worker_request(jsonmessage, respondent, group):
     response = {}
     worker = Player.objects.get(pk=jsonmessage['player_pk'])
-    print("worker item", worker)
     accepted_contract = JobContract.objects.filter(accepted=True, employer__group=group, worker=worker).count()
+    print("accepted contracts", accepted_contract)
     if accepted_contract > 0:
         # do nothing
         response['last_message'] = False
@@ -60,25 +60,30 @@ def process_worker_request(jsonmessage, respondent, group):
         wage_accepted = jsonmessage['wage_accepted']
         print("wage_accepted and contract.amount", wage_accepted, contract.amount)
         if contract.accepted:
+            print("contract has been accepted")
             # check if there are alternative contracts with the identical wage offer
             time.sleep(0.01)
             alternative_contracts = list(
                 JobContract.objects.filter(accepted=False, employer__group=group, amount=wage_accepted).values('pk', 'amount'))
             if len(alternative_contracts) == 0:
+                print("no alternative contracts")
                 response['already_taken'] = True
                 response['last_message'] = False
                 group.last_message = False
                 group.save()
             else:
+                print("alternative contract found")
                 contract_key = alternative_contracts[0]['pk']
                 contract = JobContract.objects.get(pk=contract_key)
                 # double-check, basically should be reduntant
                 if contract.accepted:
+                    print("alternative also accepted?!")
                     response['already_taken'] = True
                     response['last_message'] = False
                     group.last_message = False
                     group.save()
                 else:
+                    print("alternative contract to be accepted")
                     contract.worker = worker
                     contract.accepted = True
                     contract.save()
@@ -86,9 +91,11 @@ def process_worker_request(jsonmessage, respondent, group):
                     group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
                     group.save()
         elif int(wage_accepted) != contract.amount:
+            print("offer suddenly changed")
             response['already_taken'] = True
             response['last_message'] = False
         else:
+            print("contract accepted as first")
             contract.worker = worker
             contract.accepted = True
             contract.save()

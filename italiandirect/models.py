@@ -124,6 +124,7 @@ class Group(BaseGroup):
                 if person.round_number == rounds:
                     person.payoff = person.pay
 
+
 class Player(BasePlayer):
     treatment = models.CharField()
     wage_offer = models.IntegerField()

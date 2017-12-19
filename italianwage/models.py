@@ -137,8 +137,8 @@ class Player(BasePlayer):
     job_to_do_updated=models.BooleanField(initial=False)
     offers_dump = models.CharField()
     job_contract_dump = models.CharField()
-    total_payoff = models.CurrencyField()
     pay = models.CurrencyField()
+    total_payoff = models.CurrencyField()
 
     def role(self):
         for each in self.session.vars['roles']:
@@ -165,3 +165,5 @@ class JobContract(djmodels.Model):
     tasks_att = models.PositiveIntegerField(initial=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    auctionenddate = models.FloatField()
+    day_over = models.BooleanField()
