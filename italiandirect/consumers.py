@@ -32,20 +32,16 @@ def process_employer_request(jsonmessage, group):
     employer.offers.create(amount=wage_offer)
     contract, created = employer.contract.get_or_create(defaults={'amount': wage_offer,
                                                                   'accepted': False, })
-    # This got fired up... even if one was not created.
     if created:
         group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
         group.save()
-
-        #Now... what happens if the employer tries to modify the wage after it has been accepted?
-        #At the moment... it just gives false information on the screen...
-
     if not created:
         group.last_message = str(
             "Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
         group.save()
         contract.amount = wage_offer
         contract.save()
+
     time.sleep(0.01)
 
 

@@ -69,7 +69,6 @@ Rimangono <b><span id="emps_left">{{ Constants.num_employers |json }}</span></b>
         if (Number($(this).data('offer')) !== Number($("span#standing_offer").html())) {
             create_or_update_contract($(this).data('offer'));
         };
-
         $("#standing_offer").html($(this).data('offer'));
         console.log('offer clicked');
 

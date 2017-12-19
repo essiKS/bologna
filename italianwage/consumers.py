@@ -25,7 +25,7 @@ def get_contracts(group):
     group.save()
     return contracts
 
-
+    # The error is caused when they update the offer...
 def process_employer_request(jsonmessage, group):
     print('message from employer')
     employer = Player.objects.get(pk=jsonmessage['player_pk'])
@@ -43,6 +43,8 @@ def process_employer_request(jsonmessage, group):
         contract.amount = wage_offer
         contract.save()
     time.sleep(0.01)
+
+
 
 
 def process_worker_request(jsonmessage, respondent, group):
