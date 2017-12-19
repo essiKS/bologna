@@ -97,7 +97,7 @@ def big_message(message, participant_code):
             feedback.append("<br> Accettare un'offerta di un datore di lavoro significa che il lavoratore lavorerà "
                             "per quel datore per questo round")
         if answer_vector[3] == '2' or answer_vector[4] == '2':
-            feedback.append("<br> Generalmente, quando assume qualcuno, il datore di lavoro ottiene 40 punti. "
+            feedback.append("<br> (Per due affermazioni:) Generalmente, quando assume qualcuno, il datore di lavoro ottiene 40 punti. "
                             "A questi va tolto il salario dovuto al lavoratore, ed aggiunto il guadagno"
                             " proveniente dal lavoro del'assunto. Il guadagno di un lavoratore assunto, "
                             "invece, consiste nel suo salario")
