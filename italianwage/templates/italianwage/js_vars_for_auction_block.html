@@ -84,11 +84,10 @@
                 movefunction(obj.last_message)
         }
 
-          if (obj.day_over) {
+        if (obj.day_over) {
             $('#form').submit();
             return;
         }
-
         if (obj.closed_contracts) {
             closed_contracts = jQuery.parseJSON(obj.closed_contracts);
             console.log('CLOSED::::' + obj.closed_contracts);
@@ -111,7 +110,6 @@
             );
 
         }
-
 
         if (obj.active_contracts) {
             active_contracts = jQuery.parseJSON(obj.active_contracts);

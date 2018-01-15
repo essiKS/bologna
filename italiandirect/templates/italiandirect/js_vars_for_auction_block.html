@@ -75,10 +75,10 @@
         $('span#emps_left').html(employers_left);
         $('#workers_left').html(workers_left);
         if (employers_left === 1) {
-            $('span#Semp').empty();
+            $('span#Semp').html("datore");
         }
         if (workers_left === 1) {
-            $('span#Sworker').empty();
+            $('span#Sworker').html("lavoratore");
         }
         if (obj.last_message) {
                 movefunction(obj.last_message)

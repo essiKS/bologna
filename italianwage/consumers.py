@@ -29,20 +29,23 @@ def get_contracts(group):
 def process_employer_request(jsonmessage, group):
     print('message from employer')
     employer = Player.objects.get(pk=jsonmessage['player_pk'])
+    accepted_contract = JobContract.objects.filter(accepted=True, employer__group=group, employer=employer).count()
     wage_offer = jsonmessage['wage_offer']
-    employer.offers.create(amount=wage_offer)
-    contract, created = employer.contract.get_or_create(defaults={'amount': wage_offer,
+    if accepted_contract > 0:
+        print("employer already hiring")
+    else:
+        employer.offers.create(amount=wage_offer)
+        contract, created = employer.contract.get_or_create(defaults={'amount': wage_offer,
                                                                   'accepted': False, })
-    if created:
-        group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
-        group.save()
-    if not created:
-        group.last_message = str(
-            "Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
-        group.save()
-        contract.amount = wage_offer
-        contract.save()
-    time.sleep(0.01)
+        if created:
+            group.last_message = str("Nuova offerta salariale di " + str(wage_offer) + ".")
+            group.save()
+        if not created:
+            group.last_message = str(
+                "Un'offerta precedentemente di " + str(contract.amount) + " è ora di " + str(wage_offer) + ".")
+            group.save()
+            contract.amount = wage_offer
+            contract.save()
 
 
 
@@ -64,7 +67,6 @@ def process_worker_request(jsonmessage, respondent, group):
         if contract.accepted:
             print("contract has been accepted")
             # check if there are alternative contracts with the identical wage offer
-            time.sleep(0.01)
             alternative_contracts = list(
                 JobContract.objects.filter(accepted=False, employer__group=group, amount=wage_accepted).values('pk', 'amount'))
             if len(alternative_contracts) == 0:
@@ -105,7 +107,6 @@ def process_worker_request(jsonmessage, respondent, group):
             group.save()
             response['already_taken'] = False
 
-    time.sleep(0.01)
     response.update(get_contracts(group))
     respondent.send({'text': json.dumps(response)})
 

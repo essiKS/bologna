@@ -62,6 +62,7 @@ class Auction(EmployerPage):
         active_contracts = JobContract.objects.filter(accepted=False, employer__group=self.group).values('pk', 'amount')
         return {'time_left': self.group.time_left(),
                 'active_contracts': active_contracts,}
+        # the active contracts work through the JobContract objects.
 
     def before_next_page(self):
         time.sleep(0.1)
@@ -79,6 +80,7 @@ class Auction(EmployerPage):
             if closed_contract:
                 self.player.matched = 1
                 self.player.wage_offer = closed_contract.first().amount
+                #why does this line give wrong wages?
             else:
                 self.player.matched = 0
             self.player.offers_dump = self.player.offers.values()
@@ -118,7 +120,17 @@ class WPage(WaitPage):
 
     def after_all_players_arrive(self):
         time.sleep(0.1)
+
         for g in self.subsession.get_groups():
+            for p in g.get_players():
+                closed_contract = p.contract.filter(accepted=True)
+                if p.role == "employer":
+                    if closed_contract:
+                        p.matched = 1
+                        p.wage_offer = closed_contract.amount
+                    else:
+                        p.matched = 0
+                    p.offers_dump = p.offers.values()
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
@@ -128,7 +140,8 @@ class WPage(WaitPage):
 
 class AfterAuctionDecision(EmployerPage):
     def extra_is_displayed(self):
-        if self.player.matched == 1:
+        # make this if depended on there being a contract or not... not on this secondary variable.
+        if self.player.contract.filter(accepted=True):
             return True
 
     form_model = models.Player
