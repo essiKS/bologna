@@ -158,7 +158,7 @@ SESSION_CONFIGS = [
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
         'timeline': 'wage',
         # allowed timelines are 'direct' and 'wage' for the to applications to sequence, directauction and wageauction
-        'app_sequence': ['italiantutorial', 'italianwage', 'endsurvey'],
+        'app_sequence': ['italiantutorial', 'italiandirect', 'endsurvey'],
     },
 
 ]
