@@ -128,10 +128,12 @@ class WPage(WaitPage):
                     closed_contract = p.contract.get()
                     if closed_contract.accepted:
                         p.matched = 1
-                        p.wage_offer = closed_contract.amount
+                        if not p.wage_offer:
+                            p.wage_offer = closed_contract.amount
                     else:
                         p.matched = 0
-                    p.offers_dump = p.offers.values() + "and" + p.contract.values()
+                    if not p.offers_dump:
+                        p.offers_dump = p.offers.values() + "and" + p.contract.values()
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
@@ -220,7 +222,7 @@ class WaitP(WaitPage):
     template_name = 'italianwage/WaitP.html'
 
     def vars_for_template(self):
-        self.group.work_end_date = time.time() + Constants.task_time
+        self.group.work_end_date = time.time() + Constants.task_time + 30
         return {'time_left': self.group.time_work()}
 
     def after_all_players_arrive(self):

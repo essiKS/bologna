@@ -206,7 +206,7 @@ class WaitP(WaitPage):
     template_name = 'italiandirect/WaitP.html'
 
     def vars_for_template(self):
-        self.group.work_end_date = time.time() + Constants.task_time
+        self.group.work_end_date = time.time() + Constants.task_time + 30
         return {'time_left': self.group.time_work()}
 
     def after_all_players_arrive(self):

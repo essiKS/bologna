@@ -79,7 +79,14 @@ segnata qui sotto con uno sfondo <b><span class="chosenbutton">azzurro</span></b
     <script>
     var adjustment;
     $("button.offer").on("click", function () {
-        adjustment =  $(this).data('offer') - {{ player.wage_offer|json }};
+        if ({{ player.wage_offer }}) {
+            adjustment =  $(this).data('offer') - {{ player.wage_offer|json }};
+        }
+        else {
+            adjustment =  $(this).data('offer');
+        }
+
+        // does this work if wage_offer is missing?
         var adjusted_offer = $(this).data('offer');
         $("#adjustment").val(adjustment);
         $('input#to_show_adjusted').val(adjusted_offer);
