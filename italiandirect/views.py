@@ -93,7 +93,7 @@ class Auction(EmployerPage):
             self.player.wage_offer = closed_contract.first().amount
         else:
             self.player.matched = 0
-        self.player.offers_dump = self.player.offers.values()
+        self.player.offers_dump = str(self.player.offers.values()) + "and" + str(self.player.contract.values())
 
         if self.timeout_happened:
             time.sleep(0.1)
@@ -103,7 +103,7 @@ class Auction(EmployerPage):
                 self.player.wage_offer = closed_contract.first().amount
             else:
                 self.player.matched = 0
-            self.player.offers_dump = self.player.offers.values()
+            self.player.offers_dump = str(self.player.offers.values()) + "and" + str(self.player.contract.values())
 
 
 class Accept(WorkerPage):
@@ -144,14 +144,14 @@ class WPage(WaitPage):
         time.sleep(0.1)
         for g in self.subsession.get_groups():
             for p in g.get_players():
-                closed_contract = p.contract.filter(accepted=True)
                 if p.role == "employer":
-                    if closed_contract:
+                    closed_contract = p.contract.get()
+                    if closed_contract.accepted:
                         p.matched = 1
                         p.wage_offer = closed_contract.amount
                     else:
                         p.matched = 0
-                    p.offers_dump = p.offers.values()
+                    p.offers_dump = str(p.offers.values()) + "and" + str(p.contract.values())
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:

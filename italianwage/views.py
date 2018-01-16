@@ -1,7 +1,7 @@
 from otree.api import Currency as c, currency_range
 from . import models
 from ._builtin import Page, WaitPage
-from .models import Constants, Group, Subsession, JobContract
+from .models import Constants, Group, Subsession, JobContract, Player
 import time
 
 
@@ -80,7 +80,8 @@ class Auction(EmployerPage):
             if closed_contract:
                 self.player.matched = 1
                 self.player.wage_offer = closed_contract.first().amount
-                #why does this line give wrong wages?
+                #why does this line give wrong wages? old wages, to be exact?
+                #who come it does not execute either?!
             else:
                 self.player.matched = 0
             self.player.offers_dump = self.player.offers.values()
@@ -123,14 +124,14 @@ class WPage(WaitPage):
 
         for g in self.subsession.get_groups():
             for p in g.get_players():
-                closed_contract = p.contract.filter(accepted=True)
                 if p.role == "employer":
-                    if closed_contract:
+                    closed_contract = p.contract.get()
+                    if closed_contract.accepted:
                         p.matched = 1
                         p.wage_offer = closed_contract.amount
                     else:
                         p.matched = 0
-                    p.offers_dump = p.offers.values()
+                    p.offers_dump = p.offers.values() + "and" + p.contract.values()
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
@@ -150,9 +151,19 @@ class AfterAuctionDecision(EmployerPage):
     def before_next_page(self):
         time.sleep(0.1)
         closed_contract = self.player.contract.get(accepted=True)
-        closed_contract.amount_updated = self.player.wage_offer + self.player.wage_adjustment
+        if self.player.wage_offer:
+            closed_contract.amount_updated = self.player.wage_offer + self.player.wage_adjustment
+        else:
+            closed_contract.wage_offer = 0
+            closed_contract.amount_updated = self.player.wage_adjustment
         closed_contract.worker.job_to_do_updated = True
         closed_contract.save()
+
+        if self.timeout_happened:
+            closed_contract = self.player.contract.get(accepted=True)
+            closed_contract.amount_updated = self.player.wage_offer
+            closed_contract.worker.job_to_do_updated = False
+            closed_contract.save()
 
 
 class AuctionResultsWait(WaitPage):

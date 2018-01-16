@@ -20,18 +20,18 @@
 {% endif %}
 
 
-{% if player.matched == 1 and player.tax_outcome == 1 and player.treatment != "no_taxes" %}
+{% if player.matched != 0 and player.tax_outcome == 1 and player.treatment != "no_taxes" %}
     <h3> Schema di tassazione </h3>
     <p> Non ci sono tasse per questo periodo. </p>
-{% elif player.matched == 1 and player.tax_outcome == 2 and player.treatment != "no_taxes" %}
+{% elif player.matched != 0 and player.tax_outcome == 2 and player.treatment != "no_taxes" %}
     <h3> Schema di tassazione </h3>
     <p> Si applica una <b> tassa del 20 % sui ricavi del datore di lavoro</b>. </p>
-{% elif player.matched == 1 and player.tax_outcome == 3 and player.treatment != "no_taxes" %}
+{% elif player.matched != 0 and player.tax_outcome == 3 and player.treatment != "no_taxes" %}
     <h3> Schema di tassazione </h3>
     <p>Si applica una <b> tassa del 20 % sul reddito del lavoratore</b>. </p>
 {% endif %}
 
-{% if player.matched == 1 %}
+{% if player.matched != 0 %}
     <h4> Salario finale: </h4>
     <p> L'offerta di salario era preliminare. Ora devi scegliere il salario finale. </p>
     <p> Hai assunto un lavoratore con l'offerta di salario iniziale di <b>{{ player.wage_offer }}</b>,
@@ -50,6 +50,12 @@ segnata qui sotto con uno sfondo <b><span class="chosenbutton">azzurro</span></b
     </form>
 
 {% endif %}
+
+{% if player.wage_offer %}
+{% else %}
+   Se mancano informazioni sopra, segnalalo alzando la mano e proveremo a correggere l'errore.
+{% endif %}
+
 {% endblock %}
 
 {% block styles %}

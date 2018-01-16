@@ -48,8 +48,6 @@ def process_employer_request(jsonmessage, group):
             contract.save()
 
 
-
-
 def process_worker_request(jsonmessage, respondent, group):
     response = {}
     worker = Player.objects.get(pk=jsonmessage['player_pk'])

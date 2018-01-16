@@ -117,13 +117,12 @@ class Group(BaseGroup):
             for person in self.get_players():
                 person.pay = 0
 
-
-
     def set_payoffs(self):
         for person in self.get_players():
             for rounds in self.session.vars['paying_rounds']:
                 if person.round_number == rounds:
                     person.payoff = person.pay
+
 
 class Player(BasePlayer):
     treatment = models.CharField()
