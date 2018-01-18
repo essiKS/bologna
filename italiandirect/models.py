@@ -36,7 +36,7 @@ class Subsession(BaseSubsession):
     wp_to_delete_completion = models.IntegerField()
 
     def creating_session(self):
-        taxes = [1, 3, 1, 2, 2, 1, 1, 1]
+        taxes = [1, 2, 1, 3, 3, 1, 1, 1]
         tax_outcome = taxes[self.round_number - 1]
         if 'treatment' in self.session.config:
             if self.session.config['treatment'] == "no_taxes":
