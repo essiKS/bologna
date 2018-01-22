@@ -156,9 +156,9 @@ SESSION_CONFIGS = [
         'num_demo_participants': 12,
         'treatment': 'no_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
-        'timeline': 'direct',
+        'timeline': 'wage',
         # allowed timelines are 'direct' and 'wage' for the to applications to sequence, directauction and wageauction
-        'app_sequence': ['italiantutorial', 'italiandirect', 'endsurvey'],
+        'app_sequence': ['italiantutorial', 'italianwage', 'endsurvey'],
     },
 
 ]
