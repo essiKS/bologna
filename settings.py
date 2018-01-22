@@ -154,7 +154,7 @@ SESSION_CONFIGS = [
         'name': 'italiantutorial',
         'display_name': 'italiantutorial',
         'num_demo_participants': 12,
-        'treatment': 'worker_tax',
+        'treatment': 'no_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
         'timeline': 'direct',
         # allowed timelines are 'direct' and 'wage' for the to applications to sequence, directauction and wageauction
