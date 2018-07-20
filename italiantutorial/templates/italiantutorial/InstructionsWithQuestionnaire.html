@@ -5,15 +5,14 @@
     Istruzioni Dettagliate
 {% endblock %}
 
-{% block content %}
-    <head>
- <style>
+{% block styles %}
+<style>
 div.tab {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 25%;
-    height: 900px;
+    height: 1020px;
 }
 
 /* Style the buttons inside the tab */
@@ -47,10 +46,13 @@ div.tab button.active {
     border: 1px solid #ccc;
     width: 75%;
     border-left: none;
-    height: 900px;
+    height: 1020px;
 }
 </style>
-    </head>
+{% endblock %}
+
+{% block content %}
+
 
 
 <div class="tab">

@@ -1,4 +1,6 @@
+
 {% load staticfiles otree_tags %}
+
 {% if player.timeline == 'indirect' and player.treatment != 'no_taxes' %}
 <h3>Tasse e salario finale</h3>
 {% elif player.timeline == 'indirect' and player.treatment == 'no_taxes' %}
@@ -11,7 +13,7 @@
 <!-- Common information starts -->
 
 <p> Dopo la fase di assunzione, tutti i partecipanti vedono i risultati delle assunzioni. In questo caso: </p>
-{% if player.wage_offer > 0 %}
+{% if player.wage_offer != 0 %}
     <p style="margin-left: 40px"> <i>  La fase di assunzione è terminata. Risultati complessivi:
     1 lavoratore è stato assunto con l'iniziale offerta di salario:
     {{ player.wage_offer|json }} (...nell'esperimento vedrai la lista di tutti i salari accettati). <br>

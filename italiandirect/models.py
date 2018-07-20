@@ -73,7 +73,7 @@ class Group(BaseGroup):
     num_contracts_closed = models.IntegerField()
     day_over = models.BooleanField()
     last_message = models.CharField()
-    wage_list = models.CommaSeparatedIntegerField(max_length=100)
+    wage_list = models.CharField()
     contracts_dump = models.CharField()
 
     def time_left(self):

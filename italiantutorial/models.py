@@ -4,7 +4,7 @@ from otree.api import (
 )
 import time
 import datetime
-from radiogrid import RadioGridField
+from radiogrid.radiogrid import RadioGridField
 
 author = 'Your name here'
 
@@ -14,7 +14,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'italiantutorial'
+    name_in_url = 'italianwage'
     players_per_group = None
     num_rounds = 1
     lower_bound = 30
@@ -73,7 +73,7 @@ VALUES = (
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
-ROWSS = COMMON_ROWS + INDIRECT_ROWS + EMPLOYER_TAX_ROWS
+ROWSS = COMMON_ROWS + INDIRECT_ROWS + ALL_TAXES_ROWS
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################

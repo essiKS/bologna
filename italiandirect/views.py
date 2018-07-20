@@ -3,9 +3,7 @@ from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants, Group, Subsession, JobContract
 import time
-from random import randint
-from channels import Group as ChannelGroup
-from otree.models_concrete import CompletedGroupWaitPage
+
 
 
 # HELPFUL PAGE TYPES
@@ -89,11 +87,11 @@ class Auction(EmployerPage):
         time.sleep(0.1)
         closed_contract = self.player.contract.filter(accepted=True)
         if closed_contract:
-            self.player.matched = closed_contract
+            self.player.matched = 1
             self.player.wage_offer = closed_contract.first().amount
         else:
             self.player.matched = 0
-        self.player.offers_dump = str(self.player.offers.values()) + "and" + str(self.player.contract.values())
+        self.player.offers_dump = self.player.offers.values()
 
         if self.timeout_happened:
             time.sleep(0.1)
@@ -103,7 +101,7 @@ class Auction(EmployerPage):
                 self.player.wage_offer = closed_contract.first().amount
             else:
                 self.player.matched = 0
-            self.player.offers_dump = str(self.player.offers.values()) + "and" + str(self.player.contract.values())
+            self.player.offers_dump = self.player.offers.values()
 
 
 class Accept(WorkerPage):
@@ -142,22 +140,25 @@ class WPage(WaitPage):
 
     def after_all_players_arrive(self):
         time.sleep(0.1)
+
         for g in self.subsession.get_groups():
             for p in g.get_players():
                 if p.role == "employer":
                     closed_contract = p.contract.get()
                     if closed_contract.accepted:
                         p.matched = 1
-                        p.wage_offer = closed_contract.amount
+                        if not p.wage_offer:
+                            p.wage_offer = closed_contract.amount
                     else:
                         p.matched = 0
-                    p.offers_dump = str(p.offers.values()) + "and" + str(p.contract.values())
+                    if not p.offers_dump:
+                        p.offers_dump = p.offers.values() + "and" + p.contract.values()
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
                     wages.append(g.get_player_by_id(p.id_in_group).wage_offer)
+            print(wages)
             g.wage_list = str(wages)[1:-1]
-
 
 class AuctionResultsEmployer(EmployerPage):
     def vars_for_template(self):

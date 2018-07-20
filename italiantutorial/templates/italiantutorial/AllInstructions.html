@@ -1,3 +1,4 @@
+
 {% extends "global/Page.html" %}
 {% load staticfiles otree_tags %}
 
@@ -5,8 +6,7 @@
     Istruzioni Dettagliate
 {% endblock %}
 
-{% block content %}
-    <head>
+{% block styles %}
  <style>
 div.tab {
     float: left;
@@ -63,14 +63,17 @@ div.tab button.active {
 /* Style the tab content */
 .tabcontent {
     float: left;
-    padding: 0px 12px;
+    padding: 0 12px;
     border: 1px solid #ccc;
     width: 75%;
     border-left: none;
     height: 800px;
 }
 </style>
-    </head>
+
+{% endblock %}
+
+{% block content %}
 
 <div class="tab">
   <button id='auction' type="button" class="tablinks" onclick="openCity(event, 'Auction')">Fase di assunzione</button>
@@ -106,7 +109,6 @@ div.tab button.active {
 </div>
 
 <div id="Taxes" class="tabcontent">
-
 {% include 'italiantutorial/instructions_taxes.html' %}
 
 </div>

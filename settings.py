@@ -8,6 +8,10 @@ import otree.settings
 CHANNEL_ROUTING = 'italian_routing.channel_routing'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+
+# the usual is : CHANNEL_ROUTING = 'italian_routing.channel_routing'
+
+
 # the environment variable OTREE_PRODUCTION controls whether Django runs in
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
 
@@ -133,13 +137,13 @@ SESSION_CONFIGS = [
         'display_name': 'endsurvey',
         'num_demo_participants': 12,
         'app_sequence': ['endsurvey', ],
-    },
+},
     {
         'name': 'italianwage',
         'display_name': 'italianwage',
         'num_demo_participants': 12,
         'app_sequence': ['italianwage', 'endsurvey'],
-        'treatment': 'employer_tax',
+        'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
     },
     {
@@ -147,14 +151,14 @@ SESSION_CONFIGS = [
         'display_name': 'italiandirect',
         'num_demo_participants': 12,
         'app_sequence': ['italiandirect', 'endsurvey'],
-        'treatment': 'employer_tax',
+        'treatment': 'worker_tax',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
     },
     {
         'name': 'italiantutorial',
         'display_name': 'italiantutorial',
         'num_demo_participants': 12,
-        'treatment': 'employer_tax',
+        'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
         'timeline': 'wage',
         # allowed timelines are 'direct' and 'wage' for the to applications to sequence, directauction and wageauction
