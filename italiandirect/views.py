@@ -142,17 +142,6 @@ class WPage(WaitPage):
         time.sleep(0.1)
 
         for g in self.subsession.get_groups():
-            for p in g.get_players():
-                if p.role == "employer":
-                    closed_contract = p.contract.get()
-                    if closed_contract.accepted:
-                        p.matched = 1
-                        if not p.wage_offer:
-                            p.wage_offer = closed_contract.amount
-                    else:
-                        p.matched = 0
-                    if not p.offers_dump:
-                        p.offers_dump = p.offers.values() + "and" + p.contract.values()
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:

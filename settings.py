@@ -151,7 +151,7 @@ SESSION_CONFIGS = [
         'display_name': 'italiandirect',
         'num_demo_participants': 12,
         'app_sequence': ['italiandirect', 'endsurvey'],
-        'treatment': 'worker_tax',
+        'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
     },
     {
@@ -160,9 +160,10 @@ SESSION_CONFIGS = [
         'num_demo_participants': 12,
         'treatment': 'all_taxes',
         # the allowed treatments are 'no_taxes', 'worker_tax', 'employer_tax', and 'all_taxes'
-        'timeline': 'wage',
-        # allowed timelines are 'direct' and 'wage' for the to applications to sequence, directauction and wageauction
-        'app_sequence': ['italiantutorial', 'italianwage', 'endsurvey'],
+        'timeline': 'direct',
+        # allowed timelines are 'direct' and 'wage' and they must correspond
+        #  to the applications in the sequence, directauction and wageauction
+        'app_sequence': ['italiantutorial', 'italiandirect', 'endsurvey'],
     },
 
 ]

@@ -75,7 +75,7 @@ def process_worker_request(jsonmessage, respondent, group):
                 contract = JobContract.objects.get(pk=contract_key)
                 # double-check, basically should be reduntant
                 if contract.accepted:
-                    print("accepted, gone")
+                    print("already accepted, gone")
                     response['already_taken'] = True
                     response['last_message'] = False
                     group.last_message = False
@@ -88,6 +88,10 @@ def process_worker_request(jsonmessage, respondent, group):
                     response['already_taken'] = False
                     group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
                     group.save()
+                    worker.matched = 1
+                    if worker.role == "employer":
+                        worker.wage_offer = wage_accepted
+                    worker.save()
         elif int(wage_accepted) != contract.amount:
             response['already_taken'] = True
             response['last_message'] = False
@@ -98,6 +102,10 @@ def process_worker_request(jsonmessage, respondent, group):
             contract.save()
             group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
             group.save()
+            worker.matched = 1
+            if worker.role == "employer":
+                worker.wage_offer = wage_accepted
+            worker.save()
             response['already_taken'] = False
 
     time.sleep(0.01)

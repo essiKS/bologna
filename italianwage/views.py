@@ -99,16 +99,14 @@ class Accept(WorkerPage):
 
     def before_next_page(self):
         time.sleep(0.1)
-        closed_contract = self.player.work_to_do.filter(accepted=True)
-        if closed_contract:
+        if self.player.work_to_do.filter(accepted=True):
             self.player.matched = 1
         else:
             self.player.matched = 0
 
         if self.timeout_happened:
             time.sleep(0.1)
-            closed_contract = self.player.work_to_do.filter(accepted=True)
-            if closed_contract:
+            if self.player.work_to_do.filter(accepted=True):
                 self.player.matched = 1
             else:
                 self.player.matched = 0
@@ -123,17 +121,6 @@ class WPage(WaitPage):
         time.sleep(0.1)
 
         for g in self.subsession.get_groups():
-            for p in g.get_players():
-                if p.role == "employer":
-                    closed_contract = p.contract.get()
-                    if closed_contract.accepted:
-                        p.matched = 1
-                        if not p.wage_offer:
-                            p.wage_offer = closed_contract.amount
-                    else:
-                        p.matched = 0
-                    if not p.offers_dump:
-                        p.offers_dump = p.offers.values() + "and" + p.contract.values()
             wages = []
             for p in g.get_players():
                 if g.get_player_by_id(p.id_in_group).wage_offer:
@@ -154,7 +141,7 @@ class AfterAuctionDecision(EmployerPage):
         time.sleep(0.1)
         closed_contract = self.player.contract.get(accepted=True)
         if self.player.wage_offer:
-            closed_contract.amount_updated = self.player.wage_offer + self.player.wage_adjustment
+            closed_contract.amount_updated = closed_contract.amount + self.player.wage_adjustment
         else:
             closed_contract.wage_offer = 0
             closed_contract.amount_updated = self.player.wage_adjustment

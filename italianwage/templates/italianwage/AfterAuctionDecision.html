@@ -79,7 +79,7 @@ segnata qui sotto con uno sfondo <b><span class="chosenbutton">azzurro</span></b
     <script>
     var adjustment;
     $("button.offer").on("click", function () {
-        if ({{ player.wage_offer }}) {
+        if (29 < {{ player.wage_offer }}) {
             adjustment =  $(this).data('offer') - {{ player.wage_offer|json }};
         }
         else {

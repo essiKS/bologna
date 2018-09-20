@@ -25,7 +25,7 @@ def get_contracts(group):
     group.save()
     return contracts
 
-    # The error is caused when they update the offer...
+
 def process_employer_request(jsonmessage, group):
     print('message from employer')
     employer = Player.objects.get(pk=jsonmessage['player_pk'])
@@ -46,6 +46,7 @@ def process_employer_request(jsonmessage, group):
             group.save()
             contract.amount = wage_offer
             contract.save()
+
 
 
 def process_worker_request(jsonmessage, respondent, group):
@@ -92,6 +93,10 @@ def process_worker_request(jsonmessage, respondent, group):
                     response['already_taken'] = False
                     group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
                     group.save()
+                    worker.matched = 1
+                    if worker.role == "employer":
+                        worker.wage_offer = wage_accepted
+                    worker.save()
         elif int(wage_accepted) != contract.amount:
             print("offer suddenly changed")
             response['already_taken'] = True
@@ -103,6 +108,11 @@ def process_worker_request(jsonmessage, respondent, group):
             contract.save()
             group.last_message = str("È stata accettata un offerta di " + wage_accepted + ".")
             group.save()
+            worker.matched = 1
+            if worker.role == "employer":
+                worker.wage_offer = wage_accepted
+            worker.save()
+            #why does this code also report the employers to be matched? Funnily, that's all I ever asked.
             response['already_taken'] = False
 
     response.update(get_contracts(group))
